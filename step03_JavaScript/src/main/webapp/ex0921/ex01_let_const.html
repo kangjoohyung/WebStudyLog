@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1> 변수선언 방법 - let와 const:ES6 </h1>
+<script>
+let a;
+let b=10;
+let c="희정";
+d=3.14; //var키워드가 생략됨
+
+document.write("<h3>");
+document.write("a="+a+","+(typeof a)+"<br>");
+document.write("b="+b+","+(typeof b)+"<br>");
+document.write("c="+c+","+(typeof c)+"<br>");
+//document.write("d="+d+","+(typeof d)+"<br>");
+document.write("d="+window.d+","+(typeof window.d)+"<br>");
+document.write("</h3>");
+
+//동일한 이름의 변수를 선언해보자.
+//let a=200;//동일한 이름 선언 안됨, 막힌부분부터 전부 출력안됨
+
+/*선언전에 변수를 사용해보자 ->let는 선언 전에 사용 불가(에러생기며 막힌부분부터 전부 출력안됨) 
+document.write("<h3>");
+document.write("addr="+addr+","+(typeof addr)+"<br>");
+document.write("</h3>");
+
+let addr="오리역";*/
+
+//js는 함수안에서 선언된 변수(var)의 scope은 블록당 아니라 함수 scope이다
+function test(){
+	document.write("<h3>");
+	document.write("<h3>test()함수안에서의 변수<br>");
+	document.write("1.바로안 message="+message+","+(typeof message)+"<br>");//36
+	
+	{
+		var message="js변수 어렵다~";
+		//let message="js변수 어렵다~";//36,44전부 에러
+		document.write("2.이중내부 message="+message+","+(typeof message)+"<br>");
+	}
+
+	document.write("3.바깥(function안) message="+message+","+(typeof message)+"<br>");//44
+	document.write("</h3>");
+}//함수끝
+
+//함수 호출해보자
+test();
+
+///////////////////////////////////////////////
+const phone=111; //상수이다, 고정값=값변경불가, 반드시 초기화 필수
+
+document.write("<hr>");
+document.write("<hr>상수-const<br>");
+document.write("phone="+phone+","+(typeof phone)+"<br>");
+
+//값 변경해보자
+//phone=222; //상수이므로 값 변경 불가
+
+
+document.write("</hr>");
+
+</script>
+</body>
+</html>

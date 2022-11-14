@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  
+  <title>Document</title>
+<script>
+//id 유효성체크
+function IdCheck(th){//this가 전달됨
+	//console.log("th="+th);
+	//console.log(th.value);
+/////////////////////////////////////////////////////////////////	
+	/* 
+	1. if문 이용해서 알파벳, 숫자 체크
+	//영문만 입력가능 - 대소문자 안가림
+	let v=th.value.toUpperCase();//모두 대문자로 변환
+	//console.log("v="+v);
+	*//*let v=th.value.toLowerCase();//모두 소문자로 변환
+	console.log("v="+v);*//*
+	for(let i=0; i<v.length; i++){
+		let ch=v.charAt(i);
+		//console.log("ch="+ch);
+		if(ch<"A"||ch>"Z"){//알파벳과 숫자만 가능한 방법
+			//span태그 찾아서 메세지 넣기
+			document.getElementById("idSpan").innerHTML="<b style='color:red'>영문만 입력하세요</b>";
+			th.value="";//잘못입력해서 값 지우기
+			th.focus();
+			return;//함수 빠져나가기
+		}
+	} //for문끝 
+	*/
+	//document.getElementById("idSpan").innerHTML="";
+	////////////////////////////////////////////////////////////////////
+	//2. indexOf 이용: id에 영문소문자+숫자+특수문자(@,!,%,*) 허용가능 ->허용가능한 문자를 준비
+	let data="qwertyuiopasdfghjklzxcvbnm1234567890!@%*";
+	for(let i=0; i<th.value.length; i++){
+		let ch=th.value.charAt(i);
+		if(data.indexOf(ch)==-1){
+			document.getElementById("idSpan").innerHTML=
+				"<b style='color:red'>&nbsp;id에 영문소문자+숫자+특수문자(@,!,%,*)만 입력하세요</b>";
+			th.value="";//잘못입력해서 값 지우기
+			th.focus();
+			return;
+		}
+	}//forEnd
+	document.getElementById("idSpan").innerHTML="";
+}//함수끝
+/* 나이 숫자여부 체크 */
+function ageCheck(th){
+	numberCheck(th);
+}
+/*숫자 여부를 체크해주는 함수
+ *	:true를 리턴하면 정상, flase이면 숫자가 아니다 
+ */
+function numberCheck(thEle){//숫자유무를 체크할 대상(객체) 전달
+	if(isNaN(thEle.value)){//숫자 아니다
+		//span태그에 메시지를 출력
+		//console.log("thEle.nextSibling="+thEle.nextSibling);
+		thEle.nextSibling.innerHTML="<b style='color:blue'>숫자만 입력하세요</b>"
+		//입력상자를 지우고 커서놓기
+		thEle.value="";
+		thEle.focus();
+		return false;
+	}else{
+		thEle.nextSibling.innerHTML="";
+		return true;
+	}
+}
+/*주민등록번호 뒷자리 체크*/
+function genderCheck(th, fr){//th는 this, fr은 form
+	numberCheck(th);
+}
+</script>
+ 
+ </head>
+ <body>
+ <form name="form">
+   ID : <input type="text" name="id" onblur="IdCheck(this)"><span id="idSpan"></span><p>
+   age : <input type="text" name="age" onblur="ageCheck(this)"><p>
+   email : <input type="text" name="email" onblur="emailCheck(this)"><p>
+
+   <fieldset>
+     <legend>주민번호 </legend>
+	 <input type="text" size="6" name="jumin1"  onkeyup="juminCheck(this , form)"> - 
+	 <input type="text" size="7" name="jumin2" onblur="genderCheck(this, form)"
+	 ><span></span> <p>
+     
+	 성별 : 
+	 <input type="radio" name="gender" value="남자"  >남자
+     <input type="radio" name="gender" value="여자">여자
+
+   </fieldset>
+
+
+ </form>
+  
+ </body>
+</html>

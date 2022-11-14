@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+  //바탕색 5개 준비한다.
+  let arrColor = ["rgb(255, 0, 0)","rgb(0, 255, 0)","blue","skyblue","pink","gray"];
+  
+  //난수를 발생해서 난수에 해당하는 색상으로 바탕색을 변경해보자!!
+   let i = Math.floor(Math.random() * arrColor.length);
+  
+   console.log(i);
+  
+  //바탕색 변경
+  document.body.style.backgroundColor = arrColor[i];
+  
+
+</script>
+
+</body>
+</html>

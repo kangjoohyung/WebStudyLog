@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+  //바탕색 준비
+  let arrColor = ["rgb(255, 0, 0)","rgb(0, 255, 0)","blue","#ffff33","#00255255","#ff00ff"];
+  let i=0;
+  
+  
+  
+  //0.1초 마다 바탕색이 순서대로 변경되도록 한다.
+  //만약 마지막색상이되면 다시 처음색부터 시작한다. 
+  function backColor(){
+	  document.body.style.backgroundColor=arrColor[i] ;
+	  console.log("i = " + i);
+	  i++;
+	  
+	  if(i==arrColor.length)i=0;
+  }
+
+</script>
+</head>
+<body onload="setInterval('backColor()' , 1000)">
+
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+  #in,#del{
+  width:100%; height:100%; 
+
+  }
+  
+  table{
+	width:200px;
+	height:300px;
+	border:1px solid black;
+  }
+  td{
+	border:1px solid black;
+
+  }
+  .a{
+  width:100%;
+  height:100%;
+
+  }
+  </style>
+
+
+  <script>
+
+// 기호는 따로배열을 줘서 	
+  let myArray =[
+		  [7,8,9,"*"],  // 00  01 02 03 
+		  [4,5,6,"/"],
+		  [1,2,3,"+"],
+		  [0,"=",".","-"]
+	  ]; // 키보드 배열
+	  
+	  
+	  
+	document.write("<form name='f'>");
+	document.write("<table>");
+	document.write("<caption><h1>계산기</h1></caption>");
+	
+	
+	for(var i=0; i< 6;i++){//6행
+		document.write("<tr>");
+		for(var j=0 ;j< 4; j++){ //4열
+			if(i==0){//첫번째 행이다...
+				document.write("<td colspan='4'><input type='text' id='in' name='in' style='text-align:right'></td>");
+				j=3;
+			}else if(i==5 && j==0){//5행이 첫번째 열이면  -지우기 , <-- 라면 
+				document.write("<td colspan='3'><input type='reset' id='del' name='del' value='지우기' ></td>");
+				document.write("<td><input type='button' class='a' value='<-' onClick='delone(form)'></td>");
+				j=3;
+			}else if(i==4 && j==1){//= 4행의 두번열이면  -> =이라면 
+				document.write("<td><input type='button' class='a' value='"+myArray[i-1][j]+"' onClick='calcul(this,form);'></td>");
+			}
+			else{
+				document.write("<td><input type='button' class='a' value='"+myArray[i-1][j]+"' onClick='input(this);'></td>");
+			}
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+	document.write("</form>");
+
+	
+	
+	
+
+	function input(th){//button객체...
+		document.f.in.value += th.value;
+	}
+
+	function calcul(th,f){
+		//document.f.in.value = eval(document.f.in.value)
+		document.f.in.value = new Function("return " +document.f.in.value)();
+	}
+	
+	function delone(f){  //f는 form 
+		f.in.value = f.in.value.substr(0, f.in.value.length-1);
+	}
+
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

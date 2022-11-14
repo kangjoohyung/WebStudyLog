@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>연산자의 종류</h1>
+<script>
+//변수선언
+let i=10;//number
+let j="10";//string
+document.write("<h3>");
+
+//템플릿문자열 문법-ES6추가 홑따옴표=`` (''와다름 ~여기쪽)
+document.write(`i=${i}, type=${typeof i}<br>`);
+document.write(`j=${j}, type=${typeof j}<br><hr>`);
+
+//두 변수를 비교해보자
+document.write(`i==j의 결과 : type=${i==j}<br>`);//값 비교
+document.write(`i===j의 결과 : type=${i===j}<br>`);//값+type 모두 비교
+
+/*형변환 -string ---> number 변환
+ * 	1)parseInt() / window.parseInt() : 함수(메소드)
+ 		:변환하려는 문자열안에 앞에 숫자와 뒤에 문자열이 함께 있으면 숫자가 있는 곳까지 숫자로 변환해준다.
+ 		
+ 	2)Number() : 객체
+ */
+ document.write("<hr> 형변환 TEST-------------<p>");
+let data1="a100";
+document.write(`data1=${data1}, type=${typeof data1}<br>`);
+document.write(`parseInt(data1)=${parseInt(data1)},type=${typeof parseInt(data1)}<br>`);//NaN
+document.write(`Number(data1)=${Number(data1)},type=${typeof Number(data1)}<br><hr>`);//NaN
+
+ 	
+let data2="100a";
+document.write(`data2=${data2}, type=${typeof data2}<br>`);
+document.write(`parseInt(data2)=${parseInt(data2)},type=${typeof parseInt(data2)}<br>`);//100
+document.write(`Number(data2)=${Number(data2)},type=${typeof Number(data2)}<br><hr>`);//NaN
+///////////////////////////////////
+let a=10, b="3";
+document.write(`<hr color="red">`);
+document.write(`a+b=${a+b}<br>`); //원래 자바처럼 number10에 string3 더해서 103나옴
+document.write(`a+parseInt(b)=${a+parseInt(b)}<br>`); //연산자로 구하기->13
+document.write(`a+Number(b)=${a+Number(b)}<br>`); //연산자로 구하기 ->13
+document.write(`a-b=${a-b}<br>`); //알아서 컨버트해서 나옴 7
+document.write(`a*b=${a*b}<br>`); //알아서 컨버트해서 30
+document.write(`a/b=${a/b}<br>`); //알아서 컨버트해서 3.33333...5
+document.write(`a%b=${a%b}<br>`); //알아서 컨버트해서 1
+
+document.write(`<hr color="red">`);
+document.write(`a+=b=${a+=b}<br>`);//a=a+b 103
+document.write(`a-=b=${a-=b}<br>`);//100 103에서 b빼기 ??
+document.write(`a*=b=${a*=b}<br>`);//300  ??
+
+let d="50.5";
+let c=5;
+document.write(`<hr color="red"`);
+
+document.write(`d=${d}, type=${typeof d}<br>`); //edge문제로 안나오는듯?
+document.write(`parseFloat(d)=${parseFloat(d)}, type=${typeof parseFloat(d)}<br><hr>`);
+
+document.write(`${d-c} <br>`);//string
+document.write(`${parseInt(d)+c}<br>`);//number-정수형
+document.write(`${parseFloat(d)+c}<br>`);//number-실수형
+
+document.write("</h3>");
+</script>
+
+</body>
+</html>

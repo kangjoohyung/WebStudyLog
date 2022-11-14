@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1> 함수를 만들어 보자</h1>
+<script type="text/javascript">
+  /*
+     함수선언
+      1) 선언적함수
+      2) 익명 함수 
+  */
+   //선언적함수
+   function test(age){ //괄호안을 매개변수=인수 
+    	alert(`test(age)가 호출됨 , age = ${age}`) 
+   
+        return 3; //
+   }
+  
+   //함수를 호출해보자 
+   //test();
+   //test(20);
+   
+   //let re = test(2,3,4);
+   //alert("호출결과 : " + re);
+  
+   //함수이름 중복가능하다. - 하지만 중복되면 어느부분이 실해되는지 모호하기때문에 조심하자.
+  /*function test(){
+	  alert("test() call....");
+  }*/
+  
+  ////////////////////////////////////////
+   //익명함수
+  let test2 = function(i){
+	  alert("익명함수  i = " + i);
+	  return "break time";
+  }
+  
+  //익명함수 호출해보자
+  let result = test2(5);
+  document.write(`<h3>result = ${result}</h3>`);
+  
+  document.write(`test = ${typeof test}<br>`);
+  document.write(`test2 = ${typeof test2}<br>`);
+  document.write(`result = ${typeof result}<hr>`);
+  
+  
+  document.write(`test() = ${typeof test()}<br>`);
+  document.write(`test2() = ${typeof test2()}<br>`);
+  
+</script>
+
+</body>
+</html>
+
+
+
+
+

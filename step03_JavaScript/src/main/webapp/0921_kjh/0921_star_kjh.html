@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>0921_star_강주형</title>
+</head>
+<body>
+<script>
+function star(){
+let starNum=prompt("별의 개수를 입력하세요","10");
+if (isNaN(starNum)) {
+	alert("1이상의 숫자를 입력하세요");
+	star();
+}
+else for(let a=starNum; a>=1; a--){
+		for(let b=starNum; b>=1; b--){
+			if(a<b){
+				document.write(" ");
+			}else{
+				document.write("*  ");
+			}
+		}
+		document.write("<br>");
+	}
+}
+star();
+</script>
+</body>
+</html>

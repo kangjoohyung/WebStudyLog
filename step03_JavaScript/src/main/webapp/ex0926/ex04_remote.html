@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+  function urlChange( url ){
+	  //자바스크립에서 url주소 변경 방법
+	  //location.href ="http://www.naver.com"; //현재창 (자신창)
+	  
+	  opener.location.href ="http://www." + url;
+  }
+
+</script>
+</head>
+<body>
+ <a href="#" onclick="urlChange('naver.com')">네이버</a> <p>
+ <a href="#" onclick="urlChange('daum.net')">다음</a> <p>
+ <a href="#" onclick="urlChange('kosta.or.kr')">코스타</a> <p>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML >
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script type="text/javascript">
+    function calCheck(fr){ //fr는 form 
+        //fr.result.value	= fr.cal.value;
+    
+        // eval(표현식)  : 인수로 전달된표현식을 자바스크립트 코드로 만들어준다. 
+    	/*fr.result.value	= eval( fr.cal.value ) ;
+        
+        alert( "fr.cal" );
+        alert( eval( "fr.cal" ) );*/
+        
+        ////////////////////////////////////////
+        fr.result.value	= new Function("return " + fr.cal.value)();
+        
+        //fr.result.value	= new Function("fr","return fr.cal.value" )(fr);
+    	
+    }
+    
+    
+    function text_Eval(fr){
+    	for(let i=1; i <= 5 ; i++){
+    		//let textEle  = "fr.t"+i ; 
+    		let textEle  = eval("fr.t"+i) ; 
+    		
+    		alert( textEle + " = " + textEle.value)
+    	}
+    	
+    	
+    }
+    
+    //////////////////////
+    function text_Eval2(fr){
+    	/*let fun = new Function("i","return 10*i" ); //정의
+    	
+    	//호출
+    	let re = fun(3);
+    	alert(re)*/
+    	
+    	/*let re = new Function("i","return 10*i")(3);//호출
+    	alert(re);*/
+    	
+    	for(let i=1; i <= 5 ; i++){
+    		//let textEle  = "fr.t"+i ; 
+    		let textEle  = new Function("fr","return fr.t"+i)(fr) ; 
+    		
+    		alert( textEle +" = " + textEle.value )
+    	}
+    	
+    }
+  </script>
+ </head>
+
+ <body>
+  <form>
+    식 :<input type="text" name="cal"/>
+	결과 : <input type="text" name="result" />
+	<input type="button" value="계산하기" onclick="calCheck(form)" />
+
+	<hr>
+
+	<input type="text" name="t1" />
+	<input type="text" name="t2" />
+	<input type="text" name="t3" />
+	<input type="text" name="t4" />
+	<input type="text" name="t5" />
+
+<p>
+	<input type="button" value="text입력값 가져오기(eval( ))" 
+	 onclick="text_Eval(form)" />
+	 <input type="button" value="text입력값 가져오기(new Function() )" 
+	 onclick="text_Eval2(form)" />
+
+
+  </form>
+
+ </body>
+</html>

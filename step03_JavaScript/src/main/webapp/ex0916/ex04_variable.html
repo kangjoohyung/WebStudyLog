@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+/*변수선언 : var vs const, let (ECMA6에서 추가) 
+ * 
+ -변수 선언 방법
+ 	var 변수이름;
+ 	var 변수이름=값;
+ 	*var키워드는 생략 가능
+ 	*값을 할당 받으면 사후에 타입이 결정된다. 
+ 	 그래서 하나의 변수에 다양한 타입의 값을 저장할수있음
+ 	
+ ->	자바에서는 타입을 정하고 변수 선언해야하지만, 
+ 	javaScript에서는 타입이 값에따라 자동으로 바뀌어서 나중에 결정됨.
+ ->(typeof 변수)를 쓰면 타입이 확인된다.
+ 
+ undefined - 변수정의 없는것, 선언되지않은 공간같은것.
+ 
+ 변수가 전체에서 선언이 안되어있다면 에러가 남(브라우저F12)
+ 선언을 밑에 하게된다면 찾기는 하는데, 값이 적용이 안됨(undefined로 나옴)
+ 
+ 동일한 이름의 변수 또 선언 -> OK (선언을 중복해도 된다는말, 변수는 같은듯?)
+ 변수를 선언전에 사용할수 있을까? -> OK (값은 적용안됨)
+ ->이러한 이유는 자바스크립트는 변수를 메모리에 올리는 과정이 호이스팅이라는 개념을 적용한다.
+	호이스팅: 객체, 변수, 함수를 메모리에 올리는 과정을 뜻함.
+	자바스크립트는 객체, 변수, 함수 것들을 페이지가 로딩하기 전에 
+	먼저 선언된 객체, 변수, 함수를 먼저 올린다.
+	-> 값만 나중에 올린다는 말인듯? 오라클DB에서 테이블 구성하고나서 값 올리듯이? 
+  */
+
+ document.write("<h2>변수에 대해 알아보자 </h2>");
+ var a;
+ var b=20;//number
+ var c='희정'; //"", '' 똑같음
+ d=3.14; //var키워드생략
+ 
+ //브라우저에 변수의 값을 출력해보자
+ document.write("<h3>");
+ document.write("a="+a+","+(typeof a)+"<br>"); 
+ document.write("b="+b+","+(typeof b)+"<br>"); 
+ document.write("c="+c+","+(typeof c)+"<br>"); 
+ document.write("d="+d+","+(typeof d)+"<br>"); 
+ document.write("</h3>");
+ 
+ //값 변경을 해보자
+ a=new String("안녕"); //object
+ b="신기하다"; //string
+ c=new Array(1,3,true,"하이",3.5); //object //자바는 배열전체가 한타입이지만, javaScript에서는 아무거나 다된다
+ d=false; //boolean
+ 
+ //브라우저에 변경된 변수의 값을 출력해보자
+ document.write("<h3>값 변경후<p>");
+ document.write("a="+a+","+(typeof a)+"<br>"); 
+ document.write("b="+b+","+(typeof b)+"<br>"); 
+ document.write("c="+c+","+(typeof c)+"<br>"); 
+ document.write("d="+d+","+(typeof d)+"<br>"); 
+ document.write("</h3>");
+ 
+ //동일한 이름의 변수를 또 선언할수있을까?
+var a="동일한 이름 변수 가능해?";
+document.write("<h3>동일한 이름 변수 선언<p>");
+document.write("a="+a+","+(typeof a)+"<br>");
+document.write("addr="+addr+","+(typeof addr)+"<br>");
+document.write("</h3>");
+
+var addr="오리역";
+
+var a="동일한 이름 변수 가능해?";
+document.write("<h3>동일한 이름 변수 선언<p>");
+document.write("a="+a+","+(typeof a)+"<br>");
+document.write("addr="+addr+","+(typeof addr)+"<br>");
+document.write("</h3>");
+////////////////////////////////휴식시간//////////////////
+/*
+ * 함수 선언 
+ 함수 안에서 선언된 변수는 지역변수이다: 선언된 함수 내부에서만 접근가능
+ 만약 함수안에서 변수를 선언할때 var 키워드를 선언하면 전역변수가 됨.
+ 지역 변수와 전역 변수의 이름이 같으면 this.으로 구분한다.
+ */
+ function test(){
+	 var a=50; //전역변수와 지역변수이름이 동일
+	 var phone="111-2222";
+	 age=30; //var를 생략하면 전역변수가 된다
+	 
+
+	 document.write("<h3>함수 안에서 변수를 사용해보자<p>");
+	 document.write("a="+a+","+(typeof a)+"<br>");
+	 document.write("this.a="+this.a+","+(typeof this.a)+"<br>");
+	 
+	 document.write("phone="+phone+","+(typeof phone)+"<br>");
+	 document.write("age="+age+","+(typeof age)+"<br>");
+	 document.write("</h3>");
+ }
+ function test2(){
+	//document.write("phone="+phone+","+(typeof phone)+"<br>");
+	document.write("age="+age+","+(typeof age)+"<br>"); 
+ }
+ 
+</script>
+
+<script>
+//위에서 선언된 변수, 함수를 호출 가능(이어지는 개념)
+test();
+
+//함수 밖에서, 함수 내부에서 선언된 변수 호출해보자
+//document.write("phone="+phone+","+(typeof phone)+"<br>"); //선언된 변수 없다고 에러생김.
+document.write("age="+age+","+(typeof age)+"<br>"); //위의 에러 문구 주석처리하면 나옴
+document.write("<hr color='red'>");
+test2();
+
+</script>
+
+</body>
+</html>

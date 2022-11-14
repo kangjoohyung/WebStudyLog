@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html onclick="check()" onmousemove="check()">
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+  /*img{left:200px; top:100px; position: absolute;}*/
+  
+  img{position: absolute;}
+</style>
+<script type="text/javascript">
+  function check(){
+	  ///alert(1)
+	  //마우스의 좌표
+	  let x = event.clientX;
+	  let y = event.clientY;
+	  //console.log("x = " + x +" , y = " + y)
+	  
+	  //이미지를 옮긴다. - css의 속성 top, left, right, bottom를 이용
+	  document.images[0].style.left = x +"px";
+	  document.images[0].style.top = y +"px";
+	  
+	  
+  }
+</script>
+</head>
+<body>
+<img src="../ex0923/img/cat.gif" >
+
+</body>
+</html>

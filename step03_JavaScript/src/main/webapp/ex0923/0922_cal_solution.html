@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+table{font-size : 20px; width:800px; height:450px; border-color:violet;}
+#title{color:black; font-size: 36px;}
+#day{font-size: 24px;}
+td:first-child,th:first-child{color:red;}
+td:last-child,th:last-child{color:blue;}
+th,td{border:1px black solid;}
+td{text-align:center;}
+#today{color:red;}
+#sp{font-size: 15px;}
+</style>
+<script>
+ //1.현재날짜구하기 ( today = new Date() )
+let today=new Date();
+let toYear=today.getFullYear();
+let toMonth=today.getMonth();//+1해야 실제달
+let toDate=today.getDate();
+ //2. 현재 달의 1일의 요일을 구하기
+let firstDate=new Date(toYear,toMonth,1);
+let day=["일","월","화","수","목","금","토"];
+let firstDay=firstDate.getDay();
+
+//3.현재 달의 마지막 일수를 구한다.
+let endDay = [31,28,31,30,31,30,31,31,30,31,30,31];
+let lastDate=endDay[today.getMonth()];
+
+//4. 현재 달의 주 수(몇주)를 구하기
+var hang = Math.ceil((firstDay + lastDate)/7)
+var date=1 // 1부터 마지막일자까지 증가하면서 출력해줄 변수
+var start=0; //첫행의 시작점을 찾기위해 필요한 변수
+
+//5. 테이블에 화면 출력
+document.write(`<table><tr><td colspan="7" id="title">
+${toYear}년&nbsp;${toMonth+1}월
+</td></tr><tr id="day">`);
+for(let i=0; i<=6; i++){
+	document.write(`<th>${day[i]}요일</th>`);
+}
+document.write(`</tr>`);
+for(let h=1; h<=hang; h++){//행(tr) - hang의길
+	document.write(`<tr>`);
+  for(let td=1; td<=7; td++){//열(td) -  7번
+     if(start < firstDay){
+        document.write(`<td>★</td>`);
+        start++; 
+     }else if(date > lastDate){
+        document.write(`<td>※</td>`);
+     }else if(date == today.getDate()){
+    	//현재날자에빨간색찍기
+        document.write(`<td id="today">${date}<br><span id="sp"></span></td>`);
+    	date++;
+     }
+     else{
+  		document.write(`<td>${date}</td>`);
+        date++;
+     } 
+  }
+	document.write(`</tr>`);
+} 
+document.write(`</table>`);
+moveTime();
+
+//6. 현재날짜 타이머 선언
+function moveTime(){
+	today=new Date(); //이거없으면 현재시간을 계속해서 불러오지못함
+	let hour=today.getHours();
+	let min=today.getMinutes();
+	let sec=today.getSeconds();
+
+	let str="AM";
+	
+	if(hour<10) hour="0"+hour;	
+	if(hour>=12){
+		str="PM";
+		if(hour==12) hour==12;
+		else hour-=12; //hour=hour-12;
+	}
+	if(min<10) min="0"+min;
+	if(sec<10) sec="0"+sec;
+
+	document.getElementById("sp").innerHTML=(`${str} ${hour} : ${min} : ${sec}`);
+	
+	setTimeout("moveTime()",1000);
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>

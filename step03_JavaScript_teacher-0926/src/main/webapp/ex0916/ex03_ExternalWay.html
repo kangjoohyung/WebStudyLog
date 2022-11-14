@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+ <!-- 외부의 ~.js 파일 연결하기  -->
+<script type="text/javascript" src="../js/basic.js">
+   //src속성있을때는 내부코드는 무시된다.
+   alert("나는 실행될까요??");//메시지를 팝업출력
+</script>
+
+<script type="text/javascript">
+  alert("저는 출력되어요~~~")
+</script>
+
+</head>
+<body>
+<!-- 
+    JavaScript 시작하기 
+       - 대소문자를 가린다.
+       - 한문장은 ; 를찍는다 단, enter를 하면 ;를 대신한다. 
+    
+      * 적용하는 방법
+       1) 태그에 직접 처리 : onEnvent종류 ="자바스크립트문법" 
+       
+       2) 문서내에 <script> </script> 적용하는 방법
+       
+       3) 외부에 ~.js문서를 만들어서 적용하는 방법 
+
+ -->
+ 
+ <h3 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"> 오늘은 즐거운 금요일!</h3>
+ 
+ <h2 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"> 나도 적용받고 싶다!!</h2>
+
+</body>
+</html>
+
+
+
+
+
+

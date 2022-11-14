@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Date 객체</h1>
+<script>
+let today=new Date(); //현재 년월일 시분초
+let today2=new Date(2021,5,20); //2021년 6월 20일 (1월=0으로 입력)
+let today3=new Date(2022,8,10,4,11,30);//2022년 9월 10일 4시 11분 30초
+
+document.write("<h3>");
+document.write(`today=${today}<br>`);
+document.write(`today2=${today2}<br>`);
+document.write(`today3=${today3}<br>`);
+
+document.write(`today.toLocaleString()=${today.toLocaleString()}<br>`);
+
+document.write(`today.getFullYear()=${today.getFullYear()}<br>`);
+
+//month는 1월이 0, 12월이 11이다
+document.write(`today.getMonth()=${today.getMonth()}<br>`);
+document.write(`today.getMonth()+1=${today.getMonth()+1}<br>`);
+document.write(`today.getDate()=${today.getDate()}<br>`);
+
+//day는 0=일, 1=월...6=토
+document.write(`today.getDay()=${today.getDay()}<br>`);
+let day=["일","월","화","수","목","금","토"];
+document.write(`day[today.getDay()]=${day[today.getDay()]}요일<br>`);
+
+document.write(`today.getHours()=${today.getHours()}<br>`);
+document.write(`today.getMinutes()=${today.getMinutes()}<br>`);
+document.write(`today.getSeconds()=${today.getSeconds()}<br>`);
+
+//날짜 또는 시간을 변경
+today.setFullYear(2000);
+today.setMonth(3);//4월
+
+document.write(`today.getFullYear()=${today.getFullYear()}<br>`);
+document.write(`today.getMonth()=${today.getMonth()}<br>`);
+document.write(`today.getMonth()+1=${today.getMonth()+1}<br>`);
+
+document.write(`today.toLocaleString()=${today.toLocaleString()}`);
+
+document.write("</h3>");
+</script>
+
+</body>
+</html>

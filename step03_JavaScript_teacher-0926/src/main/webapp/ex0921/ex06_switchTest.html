@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+div{
+  width: 200px; height: 100px; border: 1px red solid;
+}
+</style>
+<script type="text/javascript">
+
+  function cal(){
+	  //alert(1)
+	  //document.write("난 어디에 나와??"); 문서(document)가 로딩이 완료된 이후에는 사용할수 없다.
+	  
+	  //동적으로 특정 element영역에 출력을 위해서는 먼저 element를 찾아야한다. 
+	  // id로 element를 찾기
+	 let divEle = document.getElementById("result");
+	 // alert(divEle);
+	  
+	  //div영역에 content를 추가하는 방법
+	  //divEle.innerHTML="<h4>나오니?</h4>";//문자열안에 마크업이 있으면  태그로 인식
+	  //divEle.innerText="<h4>나오니?</h4>"; //문자열안에 마크업이 있으면 text로 인식
+	  
+	  
+	  // isNaN() 함수
+	 // divEle.innerHTML = isNaN(10) +"<br>"; //false
+	  //divEle.innerHTML += isNaN("10") +"<br>";//false
+	  
+	 // divEle.innerHTML += isNaN("a10") +"<br>";//true = 숫자가 아니다.
+	 // divEle.innerHTML += isNaN("10a") +"<br>";//true
+	 // divEle.innerHTML += isNaN("1a0") +"<br>";//true
+	 /////////////////////////////////////////////////////////
+	 
+	 //두수와 연산기호 받기
+	  let no1 = prompt("첫번째 수?", 0); //100a , a100 - NaN
+	  let no2 = prompt("두번째 수?", 0);
+	  
+	  let oper= prompt("연산기호는?(+,-,*,/)" , "+");
+	  
+	  if(isNaN(no1) || isNaN(no2)){
+		  alert("숫자만 입력하세여");
+		  
+		  confirm("다시할래?") ? cal() : alert("다음에 이용해주세요.");
+	  }else{
+		  //연산기호에 따라 연산을 한다.
+		  switch(oper){
+		    case "+" : divEle.innerHTML=`<h4>${no1} + ${no2} = ${parseInt(no1) + parseInt(no2)}</h4>` ; break;
+		    case "-" : divEle.innerHTML=`<h4>${no1} - ${no2} = ${no1-no2}</h4>` ; ; break;
+		    case "*" : divEle.innerHTML=`<h4>${no1} * ${no2} = ${no1*no2}</h4>` ; ; break;
+		    case "/" : divEle.innerHTML=`<h4>${no1} / ${no2} = ${no1/no2}</h4>` ; ; break;
+		    default : 
+		    	 alert("연산기호가 잘못되었습니다.");
+		         confirm("다시할래요?") ? cal() : alert("잘가~~");
+		  }
+	  }
+	  
+	  
+  }// 함수끝
+
+</script>
+</head>
+<body>
+<form>
+  <input type="button" value="연산하기" onclick="cal()">
+  
+</form><p>
+
+<div id="result"></div>
+
+</body>
+</html>
+
+

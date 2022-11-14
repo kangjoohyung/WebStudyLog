@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>0922 과제 강주형 - 시계</title>
+</head>
+
+<body>
+<form action="" name="f">
+<input type="text" name="input">
+<input type="button" value="시작" onclick="startTime()" id="start">
+<input type="button" value="중지" onclick="stopTime()" id="stop">
+</form>
+
+<script>
+let si;
+function startTime(){
+	si=setInterval("moveTime()",1000);
+}
+//람다식
+function test(){
+	setInterval(()=>{
+		//기능작성==밑에 moveTime(){}
+	},1000)
+}
+
+function moveTime(){
+	let today=new Date();
+	let hour=today.getHours();
+	let min=today.getMinutes();
+	let sec=today.getSeconds();
+	
+	let str="AM";
+	
+	if(hour<10) hour="0"+hour;	
+	if(hour>=12){
+		str="PM";
+		if(hour==12) hour==12;
+		else hour-=12; //hour=hour-12;
+	}
+	if(min<10) min="0"+min;
+	if(sec<10) sec="0"+sec;
+	
+	document.f.input.value=(`${str} ${hour} : ${min} : ${sec}`);
+}
+function stopTime(){
+	clearInterval(si);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+let i=0;
+let st;
+function test(){
+	console.log(i++);
+	st=setTimeout("test()",1000);//1초
+}
+</script>
+</head>
+<body onload="test()">
+<h2>setTimeout, clearTimeout</h2>
+<a href="#" onclick="clearTimeout(st)">멈춰!!!</a>
+
+</body>
+</html>

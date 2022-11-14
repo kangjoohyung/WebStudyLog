@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+  table { border: outset red 3px;}
+  th,td{border: 1px gray solid; padding: 5px; text-align: center;}
+  table tr:first-child {background-color: pink; color: white;}
+</style>
+
+<script type="text/javascript">
+ function gugudanPrint(){
+	 document.write("<table style='border: outset blue 3px'>");
+	    //단 출력
+	    document.write("<tr>");
+	    for(let dan=2; dan<=9 ; dan++){
+	    	document.write("<th>"+dan+"단</th>");
+	    }
+	    document.write("</tr>");
+	   
+	   for(let i=1; i <= 9; i++){//9행
+		   document.write("<tr>");
+		   for(let j=2; j<= 9 ; j++){//열
+			   document.write(`<td>${j} * ${i} = ${j*i}</td>`);
+		   }
+	       document.write("</tr>");
+	   }
+	   document.write("</table>");
+   }
+ 
+</script>
+
+
+</head>
+<!-- onload이벤트는 body의 로딩이 완료된 후에 해야할 일이 있을때 작성한다. -->
+<body onload="gugudanPrint()">
+
+
+</body>
+</html>

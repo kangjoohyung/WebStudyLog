@@ -1,0 +1,70 @@
+<!DOCTYPE HTML >
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+   <style>
+	 img{position:absolute;}
+   </style>
+
+
+   <script>
+     var i=0;
+     var state =true//증가또는 감소해야하는 상황인지를 판별하는 변수(true=증가,false=감소)
+     
+     var btnClickState = true; //레이어움직이기 버튼 클릭전 true, 클릭중 false
+     
+       //레이어움직이기 시작할지 여부를 판별하는 함수 필요함
+       function imgMoveState(){
+       	  if(btnClickState){
+       	  	st = setInterval('imgMove()', 10)//0.001
+       	    btnClickState = false;
+       	  }else{
+       	  	alert("이미 실행중입니다.^^")
+       	  }	
+       }
+
+	function imgMove() {
+		 if (i < 0) {//음수
+			state = true;
+			document.getElementById("img").src = "img/tiger.gif";
+		} else if (i > 300) {
+			state = false;
+			document.getElementById("img").src = "img/monkey.gif";
+		}
+		 
+		 
+		if (state)i++;
+		else i--;
+
+	    console.log(state+" = " + i)
+		document.getElementById("img").style.left = i + "px";
+		
+	}//함수끝
+	
+		
+	function imgStopState(){
+		clearInterval(st);
+		btnClickState = true;
+	}
+	
+	
+
+   </script>
+
+ </head>
+
+ <body>
+  <form>
+     <input type="button" value="레이어움직이기" onclick="imgMoveState()"/><!-- imgMove() 함수를 바로 생성하여 인수로 넣음-->
+	 <input type="button" value="레이어멈추기" onclick="imgStopState()"/>
+  </form>
+   <p>
+  <img src="img/dog.gif" id="img"/>
+ </body>
+</html>
+
+

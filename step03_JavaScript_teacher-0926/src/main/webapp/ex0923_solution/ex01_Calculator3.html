@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+ 
+  <title>1. 계산기</title>
+  <script>
+  	var arr = [
+  		       ["7", "8", "9", "*"],
+  		       ["4", "5", "6", "/"],
+  		       ["1", "2", "3", "+"],
+  		       ["0", "=", ".", "-"],
+  		       ["지우기", "<--"]
+  	      ];
+  	
+  	
+	function markupCalc() {
+		document.write("<div style='text-align:center;'><h1>계 산 기</h1></div>");
+		document.write("<div style='text-align:center;'>");
+		document.write("<form name='f'>");
+		document.write("<input type='text' name='inputedText' id='inputedText' style='width:230px; height:40px; margin:5px; text-align:right;'/> <br>");
+		var arrLength = arr.length; //행의길이
+		alert(arrLength)
+
+		for(i=0; i< arrLength; i++) {//5행
+			var subArrLength = arr[i].length;//각 행의 열의 길이
+			for(j=0; j< subArrLength; j++) { //4   -> 2
+				document.write("<input type='button' value=" + arr[i][j] + " id=" + arr[i][j] + " onclick='inputCh(this, form)' style='width:50px; height:50px; margin:5px;'/>");
+			}
+			document.write("<br>");
+		}
+		
+
+		// =
+		document.getElementById(arr[3][1]).setAttribute("onclick", "calc(form)"); //onclick="cal(form)"
+		
+		// 지우기
+		document.getElementById(arr[4][0]).setAttribute("type", "reset"); //type="reset"
+		document.getElementById(arr[4][0]).setAttribute("onclick", "undefined");
+		document.getElementById(arr[4][0]).setAttribute("style", "width:170px; height:50px; margin:5px;");
+		
+		// <--
+		document.getElementById(arr[4][1]).setAttribute("onclick", "backCh(this, form)");
+		
+
+		document.write("</form>");
+		
+		document.write("</div>");
+	}
+	
+	
+	
+
+	function inputCh(th, fr) {
+		fr.inputedText.value += th.value;
+	}
+	
+	function calc(fr) {
+		fr.inputedText.value = eval(fr.inputedText.value);
+	}
+	
+	function backCh(th, fr) {
+		var str = fr.inputedText.value;
+		fr.inputedText.value = str.substring(0, str.length - 1);
+	}
+
+  </script>
+ </head>
+ <body onload="markupCalc()">
+ </body>
+</html>

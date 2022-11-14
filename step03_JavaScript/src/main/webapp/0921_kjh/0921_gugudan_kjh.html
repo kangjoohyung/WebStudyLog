@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>0921과제_구구단_강주형</title>
+<style>
+table{width:800px; height:120px; border:double red 5px; border-collapse:collapse;}
+th,td{border:1px gray solid;}
+td{text-align:center;}
+</style>
+</head>
+<body>
+<table>
+<tr><td colspan="8"><h2>구구단표</h2></td></tr>
+<tr><script>
+for(let dan=2; dan<=9; dan++){
+	document.write(`<th>${dan}단</th></th>`);
+}</script></tr><script>
+for(let b=2; b<10; b++){
+	document.write(`<tr>`);
+	for(let a=2; a<10; a++){
+		document.write(`<td>${a} * ${b} = ${a*b}<br></td>`);
+	}
+	document.write(`</tr>`);
+}
+</script>
+</table>
+
+</body>
+</html>

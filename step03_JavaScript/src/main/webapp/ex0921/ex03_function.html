@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>함수를 만들어보자</h1>
+<script>
+/*
+ * 함수선언
+ 1)선언적 함수
+ 2)익명 함수
+ */
+//선언적 함수
+function test(age){//괄호안을 매개변수=인수
+	 alert(`test(age)가 호출됨, age=${age}`);
+	 return 6;//밑의 re호출하면 6가 나옴
+ } 
+//함수호출 ->인수는 상관없음. 없든, 여러개든 상관없음
+test();
+test(20);
+
+let re=test(2,3,4);
+alert("호출결과:"+re); //6로 나옴
+
+//동일한 이름의 함수가 생성되면 호출시 마지막 생성된걸로 호출됨
+//함수 이름 중복가능하다, 하지만 중복되면 어느부분이 실행되는지 모호하기 대문에 주의
+/* function test(){
+	alert("test() call....");
+} */
+////////////////////////////////////////
+//익명함수
+let test2=function(i){
+	alert("익명함수 i="+i);
+	return "break time";
+}
+//익명함수 호출해보자
+test2();
+test2(5);
+let result=test2(5);
+document.write(`<h3>result=${result}</h3>`);
+
+document.write(`test=${typeof test}<br>`);//function//()넣으면 호출이기때문에 확인할때는 ()안넣음
+document.write(`test2=${typeof test2}<br>`);//function
+document.write(`result=${typeof result}<br>`);//string
+
+document.write(`test()=${typeof test()}<br>`);//number //()호출해서 함수작동까지 됨, 결과는 함수결과
+document.write(`test2()=${typeof test2()}<br>`);//string 
+
+ 
+</script>
+
+</body>
+</html>

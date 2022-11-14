@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+ a{text-decoration: none}
+</style>
+
+<script type="text/javascript">
+   function send(fr){//fr는 폼객체 
+	   
+	   //alert(1)
+	   //현재 text값을 가져온다.
+	   let text = fr.input.value;
+	   
+	   //메인창의 text박스에 값을 넣는다.
+	    top.document.getElementById("output").value  = text;
+	   
+	   
+	   //iframe b창의 div영역에서 값을 추가한다.
+	   top.b.document.getElementById("result").innerHTML += text+"<br>";
+	   
+	   //현재 text값을 비운다.
+	   fr.input.value="";
+	   
+	   //현재 text에 커서를 놓는다.
+	   fr.input.focus();
+   
+       //전송기능 막기
+       return false;
+   }
+   
+
+</script>
+</head>
+<body>
+<h3> iframe 영역 - a</h3>
+<a href="../ex0923/ex01_checkbox.html" target="_self">현재창</a><p>
+<a href="../ex0923/ex01_checkbox.html" target="_top">전체창</a><p>
+<a href="../ex0923/ex01_checkbox.html" target="b">iframe b창 </a><p>
+
+<h4> javaScript에서 location.href 이용 </h4>
+<a href="#" onclick="location.href='../ex0923/ex01_checkbox.html'">현재창</a><p>
+<a href="#" onclick="top.location.href='../ex0923/ex01_checkbox.html'">전체창</a><p>
+
+<!-- iframe영역에서 iframe 창을 칭할때는 반드시 top.iframe이름 -->
+<a href="#" onclick="top.b.location.href='../ex0923/ex01_checkbox.html'">iframe b창</a><p>
+
+<p>
+<form onsubmit="return send(this)" >
+  입력 : <input type="text" name="input">
+  <input type="submit" value="보내기">
+</form>
+
+</body>
+</html>
+
+
+
+
+

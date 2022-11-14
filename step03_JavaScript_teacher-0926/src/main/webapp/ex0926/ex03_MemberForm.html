@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>New Web Project</title>
+	<style type="text/css">
+		tr th{background-color:pink}
+		td,th{padding:3px}
+	</style>
+	
+	<script type="text/javascript">
+	  function idCkOpen(){
+		  //id박스의 입력값을 아이디중복체크쪽으로 보낸다.
+		  let idEle = document.member.id;
+		  if(idEle.value==""){
+			  alert("아이디를 입력해주세요.");
+			  idEle.focus();
+			  return ;
+		  }
+		  
+	       //데이터를 전송할때는 get방식 - url주소 노출 , post방식 - request의 body영역에 숨겨져서 
+	       //get방식의 형태는 url주소?name=value&name=value&...
+	    		   
+		  window.open("ex03_idCheck.html?id="+ idEle.value ,"win","width=400,height=300");
+	  }
+	  
+	  
+	  
+	  function zipCheck(){
+		  open("ex03_zipCheck.html","winzip", "width=500,height=400")
+	  }
+	</script>
+	
+	</head>
+	<body>
+		<h1>[ 회원 가입 ]</h1>
+		<form name="member">
+		<table>
+			<tr>
+				<th>ID</th>
+				<td>
+					<input type="text" name="id" />
+					<input type="button" value="IDCheck" onclick="idCkOpen()" />
+				</td>
+			</tr>
+			<tr>
+				<th>우편번호</th>
+				<td>
+				  <input type="text" name="zip1" size="3" /> - 
+				  <input type="text" name="zip2" size="3" />	
+				  <input type="button" value="우편번호검색" onclick="zipCheck()" />
+				</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td><input type="text" size="30" name="addr" /></td>
+			</tr>				
+		</table>
+	</form>
+	</body>
+</html>
+

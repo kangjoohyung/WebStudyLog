@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+/* 함수 만들기 예제
+1. 이름을 입력받아 이름출력(prompt이용) - 인수/리턴없음
+
+2. 색깔을 입력받아 바탕색 바꾸기(prompt이용 - 색상을 받는다)-색상인수있음
+	//바탕색 변경 ??->document.body.style.backgroundColor="red";
+	
+3. 이름과 태어난 년도를 입력받아 alert()에 이름과 나이 출력하는 함수
+	- 이름과 년도 인수 받음.
+	
+4. Confirm을 이용하여 성별구별하는 함수. ex) confirm("여자니?")
+	-성별 리턴
+  
+5. onClick="함수이름()" 이용하여 바탕색 바꾸기
+	- 두번째  함수를 이용함
+  ->제일 먼저 선생님과 같이 해봄
+*/
+//1. 이름을 입력받아 (prompt()로 받는다.) 이름을 alert("")로 출력하는 함수 - 인수/리턴없음
+function printName(){
+	  let name=prompt("이름은?", "이름입력");
+	  alert(`당신의 이름은${name}입니다.`);
+  }
+  
+//2. 색깔을 입력받아 바탕색 바꾸는 함수 (prompt이용 - 색상을 받는다) - 색상 인수있음
+	//바탕색 변경 ??->document.body.style.backgroundColor="red";
+function printBatang(Bcolor){
+	document.body.style.backgroundColor=Bcolor;
+}
+
+//3. 이름과 태어난 년도를 입력받아 alert()에 이름과 나이 출력하는 함수
+//- 이름과 년도 인수 받음.
+function printNameAge(name,year){
+	  //현재년도 구하기
+	  let today=new Date();
+	  //alert(`today=${today}\n today.getFullYear() = ${today.getFullYear()}`);
+	  let age=today.getFullYear() - year +1;
+	  alert(`당신의 이름은 ${name}이고 \n 나이는 ${age}살입니다.`);
+}
+
+//4. Confirm을 이용하여 성별구별하는 함수. ex) confirm("여자니?")
+//-성별 리턴
+let genderCheck=function(){
+	/*let re=confirm("남자니?여자니?");
+	alert("re="+re); //true, false 출력됨 */
+	
+	let re=confirm("남자니?여자니?") ? "남자" : "여자";
+	return re;
+}
+
+//5. onClick="함수이름()" 이용하여 바탕색 바꾸기
+//	- 두번째  함수를 이용함
+//버튼 태그 안에 onclick으로 넣기
+
+</script>
+</head>
+<body>
+<h1>함수를 호출해보자</h1>
+<input type="button" onclick="printBatang(prompt('바탕색깔은?','skyblue'))" value="바탕색변경">
+<input type="button" onclick="let BTcolor=prompt('바탕색깔은?','skyblue'); printBatang(BTcolor)" value="바탕색변경">
+<script>
+//작성한 함수를 호출해본다.
+printName();
+
+let BTcolor=prompt("바탕색깔은?", "skyblue");
+printBatang(BTcolor);
+//printBatang(prompt("바탕색깔은?","skyblue")); //위의 두문장과 동일함
+
+printNameAge(prompt("이름은?","이름"), prompt("태어난연도는?", 1990));
+
+let result = genderCheck();
+alert("결과:"+result);
+
+</script>
+
+</body>
+</html>

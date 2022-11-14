@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script type="text/javascript">
+      //각 매장마다 버거의 종류를 준비
+      let kfc =["징거버거","타워버거","불고기버거"];
+      let lotte=["라이스버거","데리버거","새우버거","한우버거","치즈버거"];
+      let king=["불고기와퍼","치즈와퍼","쥬니어와퍼","쉬림프버거","스테이크버거","감자칩"];
+      let mac=["1997버거","맥모닝","빅맥","베이컨버거","치킨버거"];
+      
+      function subMenu(th){
+    	  //alert( "변환전 " + th.value )
+    	  //let arr = eval(th.value);
+    	  let arr = new Function("return " + th.value)();
+    	  
+    	  //alert("변환후 = "  +arr)
+    	  let subEle = document.f.menu;
+    	  
+    	  //추가전에 기존에 있는 서브 option을 제거한다.
+    	  while(subEle.length > 1 ){
+    		  subEle.options[1] = null;
+    	  }
+    	  
+    	  for(let i=0; i < arr.length ; i++){
+    		  subEle.options[subEle.length]=
+ 				 new Option(arr[i], arr[i]) ;//<option value="징거버거">징거버거</option>
+ 		  }
+    	  
+    	 /* if(th.value=='kfc'){
+    		  for(let i=0; i < kfc.length ; i++){
+    			 document.f.menu.options[document.f.menu.length]=
+    				 new Option(kfc[i], kfc[i]) ;//<option value="징거버거">징거버거</option>
+    		  }
+    	  }else if(th.value=="lotte"){
+    		  for(let i=0; i < lotte.length ; i++){
+     			 document.f.menu.options[document.f.menu.length]=
+     				 new Option(lotte[i], lotte[i]) ;//<option value="징거버거">징거버거</option>
+     		  }
+    	  }*/
+      }
+  
+  </script>
+ </head>
+
+ <body>
+ <h2> 대/ 소 분류</h2>
+ <form name="f">
+   <select name="majang" onchange="subMenu(this)">
+       <option value="0">--매장 선택 --</option>
+	   <option value="kfc">KFC</option>
+	   <option value="lotte">롯데리아</option>
+	   <option value="king">버거킹</option>
+	   <option value="mac">맥도널드</option>
+   </select>
+   <select name="menu">
+       <option value="0">--선택 --</option>
+   </select>
+ </form>
+  
+ </body>
+</html>

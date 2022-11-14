@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> New Document </title>
+   <script>
+     function check(th){//th는 form 이다 
+    	 //전송전에 유효성체크
+    	 if(th.name.value==""){
+    		 alert("이름을 입력해주세요.");
+    		 th.name.focus();
+    		 return false; //submit의 이동을 막는다.
+    	 }
+     
+    	 if(th.id.value==""){
+    		 alert("아이디를 입력해주세요.");
+    		 th.id.focus();
+    		 return false;
+    	 } 
+     }
+     
+     function btnCheck(fr){ //form은 fr
+    	 if(fr.name.value==""){
+    		 alert("이름을 입력해주세요.");
+    		 fr.name.focus();
+    		 return ;
+    	 }
+     
+          //폼의 action 변경
+          fr.action = "ex04_selectChange.html";
+     
+         //유효성체크완료가되었다면 전송해라.
+         fr.submit();
+     }
+     
+     function resetTest(){
+    	 alert("모든 데이터를 초기화 합니다.")
+     }
+   </script>
+ </head>
+
+ <body>
+ <h2> onsubmit , onreset 이벤트 </h2>
+ <form name="f" action="http://www.daum.net" onsubmit="return check(this)" onreset="resetTest()">
+    이름 : <input type="text" name="name"/> <br>
+	아이디 : <input type="text" name="id"/> <br>
+	비번 : <input type="text" name="pwd"/> <br>
+
+	<input type="submit" value="전송" />
+	<input type="reset" value="취소" />
+	<input type="button" value="전송하기" onclick="btnCheck(form)"/>
+	
+ </form>
+  
+ </body>
+</html>

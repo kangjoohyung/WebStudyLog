@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+ <script type="text/javascript">
+    // javascript 영역으로 javascript 문법이 적용된다.
+    
+    //브라우져에 출력하고 싶다.(javaScript에서 html태그를 사용할수 있다.)
+    document.write("난 어디에 나오니?<br>");
+    document.write("<h4 style='color:red'>신기히다</h4>");
+ 
+ </script>
+</head>
+<body>
+<!-- 
+    JavaScript 시작하기 
+       - 대소문자를 가린다.
+       - 한문장은 ; 를찍는다 단, enter를 하면 ;를 대신한다. 
+    
+      * 적용하는 방법
+       1) 태그에 직접 처리 : onEnvent종류 ="자바스크립트문법" 
+       
+       2) 문서내에 <script> </script> 적용하는 방법
+       
+       3) 외부에 ~.js문서를 만들어서 적용하는 방법 
+
+ -->
+ 
+ <h3 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"> 오늘은 즐거운 금요일!</h3>
+ 
+ <script type="text/javascript">
+    document.write("<h4> 잘 나온다....</h4>");
+ </script>
+ 
+ <h2 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"> 나도 적용받고 싶다!!</h2>
+
+<script type="text/javascript">
+    //마우스를 올렸을때 기능 = 
+    function mouseOver( th ){ //th는 변수이다. 전달되는 this를 받는 변수이다
+    	console.log("th = " + th);
+    	
+    	//h3태그에 border 디자인 추가 
+    	th.style.border='double red 5px';
+    	th.style.fontFamily='궁서체'
+    }
+    
+    //마우스를 out 했을때 기능 
+    function mouseOut(th){
+    	//h3태그에 border 디자인 제거 
+    	th.style.border="none";
+    }
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+

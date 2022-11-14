@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+ <title>  </title>
+ <style>
+  table{border:#ff00ff inset 10px}
+  th,td{padding:5px; border: gray 1px solid; text-align:center}
+  #span{font-size:10px}
+
+ </style>
+ </head>
+<script>
+//현재날짜
+var today = new Date();
+var  year = today.getFullYear();//년도
+var month = today.getMonth();//월 ( 0부터시작) ex) 9월 - 8 
+var  date = today.getDate();//일
+
+//현재달의 1의 요일을 구한다.(시작점)
+var  s_date = new Date(year, month, 1);
+var yoil = s_date.getDay();//1일의 요일(0-일, 1-월 ,,, 6-토)
+
+//현재달의 마지막 일(몇일)을 구한다.
+ var end_day = [31,28,31,30,31,30,31,31,30,31,30,31];
+  //ex  end_day[month]
+
+//현재달의 주 수를 구한다(몇주)
+ var hang = Math.ceil((yoil +end_day[month])/7);
+
+// 1~ 마지막일까지 출력할 변수
+var day = 1;
+
+// 첫 행에 시작점을 체크하기위한 변수 
+ var startHang = 0;
+
+//요일을 저장할 배열선언
+ yoilDate =["일","월","화","수","목","금","토"];
+
+ //var p = document.write
+
+  //달력을 만들기 위한 테이블 만들기
+  document.write("<table align='center'>");
+  document.write("<tr><th colspan='7'>"+ year+"년 "+ (month+1) +"월 </th></tr>");
+  
+  //요일 출력
+  document.write("<tr>");
+  for(y=0; y< 7 ; y++){
+		document.write("<th>"+yoilDate[y]+"요일</th>");
+  }
+  document.write("</tr>");
+  
+  for(i=0; i < hang ; i++){//행
+      document.write("<tr>");
+  
+		for(j=0 ; j< 7 ; j++){//7열
+			if(j==0 || day == date)
+				 document.write("<td style='color:red'>"); 
+			else 
+				document.write("<td>");
+             /////////////////////////////////
+		
+			if(startHang < yoil){//★
+			   document.write("★</td>");
+			   startHang++;
+			}else if(day > end_day[month]){
+			   document.write("※</td>");
+			}else if(day == date){
+			  document.write(""+ day++ +"<br><span id='span'></span></td>");
+			}else{
+			   document.write(day++ +"</td>");
+			}
+		}
+		
+	  document.write("</tr>");
+   }
+  
+   document.write("</table>");
+   
+
+  function timerSetter(){
+	  setInterval(() =>{ 
+    	  let today =  new Date();
+   		 //시작을 클릭하면
+   		   //현재 시, 분, 초를 구한다.
+   		  let h = today.getHours();//18
+   		  let m = today.getMinutes();
+   		  let s = today.getSeconds();
+   	      
+   	      //시를 기준으로 AM , PM으로구분한다.
+   	      let str="AM";
+   	      
+   	      if(h>=12){
+   	    	  str="PM";
+   	    	  if(h > 12) //13이상
+   	    	       h-=12; //h=h-12;
+   	      }
+   	      //시, 분 , 초가 한자리인지를 체크해서 한자리이면 앞에 0붙혀서 2자리로 출력한다.
+   	      if(h<10) h = "0"+h;
+   	      if(m<10) m = "0"+m;
+   	      if(s<10) s = "0"+s;
+   	      
+   	      //구한 시분초를 text박스에 넣는다.  -> 1초마다 반복한다.
+   	      document.getElementById("span").innerHTML = str+" " + h +" : " + m +" : " + s ;
+      }, 1000);
+  }
+    
+</script>
+
+ <body onload="timerSetter()">
+  
+ </body>
+</html>

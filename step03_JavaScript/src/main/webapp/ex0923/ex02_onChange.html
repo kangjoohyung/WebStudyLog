@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title> New Document </title>
+<script>
+function check(th){
+	//alert(th);
+	let str="";
+	str+="선택된 value="+th.value+"<br>";
+	str+="선택된 index="+th.selectedIndex+"<br>";
+	str+="항목의 개수="+th.length+"<br>";
+	
+	str+="모든 항목 : ";
+	for(let i=0; i<th.length; i++){
+		str+=th[i].value+",";
+	}
+	
+	document.getElementById("result").innerHTML=str;
+	
+	//항목 추가-><option value="백수">백수</option>
+	let op=new Option("강사","teacher");
+	th.options[th.length]=op;
+	
+	//항목 제거
+}
+</script>
+</head>
+<body >
+
+<h3>
+   Event 종류 알아보기
+</h3>
+<form name="f">
+	<input type="text" 
+	onfocus="this.style.border='red double 5px'; this.style.backgroundColor='pink'" 
+	onblur="this.style.border='gray solid 1px'; this.style.backgroundColor='white'"> <p>
+
+		직업 : 
+	<select name="job" onchange="check(this)" >
+	<option value="0">--선택-- </option>
+	<option value="백수">백수</option>
+	<option value="백조">백조 </option>
+	<option value="학생">학생 </option>
+	<option value="날라리">날라리 </option>
+</select>
+</form>
+<div id="result"></div>
+  
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title> New Document </title>
+  <script type="text/javascript">
+    function imgInfo(index){
+    	/*
+    	  javaScript에서 img객체를 접근하는 방버
+    	   1) document.images[index].속성 or 함수()
+    	   2) document.이미지이름.속성 or 함수()
+    	   3) id 로 찾기 - document.getElementById("아이디").속성 or 함수()
+    	*/
+    	let str="";
+    	str+="src = " + document.images[index].src +"\n";
+    	str+="name = " + document.images[index].name +"\n";
+    	str+="width = " + document.images[index].width +"\n";
+    	str+="height = " + document.images[index].height +"\n";
+    	str+="alt = " + document.images[index].alt +"\n";
+    	str+="border = " + document.images[index].border +"\n";
+    	
+    	alert(str);
+    	
+    	//이미지를 변경하고 싶다!!
+    	document.images[index].src = "img/monkey.gif";
+    	
+    }
+    
+    function imgInfo2(imgName){
+    	
+    	imgName = new Function("return document."+imgName)();
+    	
+    	let str="";
+    	str+="src = " + imgName.src +"\n";
+    	str+="name = " + imgName.name +"\n";
+    	str+="width = " + imgName.width +"\n";
+    	str+="height = " + imgName.height +"\n";
+    	str+="alt = " + imgName.alt +"\n";
+    	str+="border = " + imgName.border +"\n";
+    	
+    	alert(str);
+    	
+    	//이미지 크기를 변경한다.
+    	imgName.width = "200";
+    	imgName.height="180";
+    }
+    
+    function imgInfo3(imgObj){
+    	alert(imgObj)
+    	
+    	let str="";
+    	str+="src = " + imgObj.src +"\n";
+    	str+="name = " + imgObj.name +"\n";
+    	str+="width = " + imgObj.width +"\n";
+    	str+="height = " + imgObj.height +"\n";
+    	str+="alt = " + imgObj.alt +"\n";
+    	str+="border = " + imgObj.border +"\n";
+    	
+    	alert(str)
+    }
+    
+  </script>
+ </head>
+
+ <body>
+ <h1> img 객체</h1>
+
+ <img src="img/cat.gif" name="cat" width="100" height="80" 
+   alt="고양이그림"/>
+
+<img src="img/dog.gif" name="dog" width="70" height="60" 
+   alt="강아지그림" border="10"/>
+
+ <hr>
+ <span onclick="imgInfo(0)">[고양이 정보]</span>
+ <span onclick="imgInfo(1)">[강아지 정보]</span> 
+ <hr>
+
+  <span onclick="imgInfo2('cat')">[고양이 정보]</span>
+  <span onclick="imgInfo2('dog')">[강아지 정보]</span>
+
+ <hr>
+
+  <span onclick="imgInfo3(cat)">[고양이 정보]</span>
+ <span onclick="imgInfo3(dog)">[강아지 정보 - dog]</span>
+ 
+ 
+ 
+
+  
+ </body>
+</html>

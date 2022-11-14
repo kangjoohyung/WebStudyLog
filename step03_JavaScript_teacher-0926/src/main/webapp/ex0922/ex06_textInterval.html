@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+  input[type=text]{ width: 400px; font-size: 20px;
+   border: red solid 3px;
+   }
+  input[type=button]{font-size: 20px; 
+          background-color: skyblue;color: white; } 
+</style>
+<script type="text/javascript">
+  let arr =["오","늘","은"," ", "목","요","일","!",
+	  "내","일","은","금","요","이","라","좋","다!"];
+  
+  let index=0;
+  let st;
+   function moveText(){
+	   //text박스에 배열방의 문자를 하나씩 넣는다. 
+	   document.f.text.value += arr[index];
+	   console.log("index="+index);
+	   
+	   index++;
+		   
+	   //만약, 배열의 끝이되면 멈춘다!
+	   if(index == arr.length ){
+		   clearInterval(st);
+		   index=0;
+	   }
+		    
+   }
+   
+   function moveStart(){
+	   //이미지 실행중이면 alert("실행중입니다.")라고 메시지를 출력
+	   //아니면 실행한다
+	   if(index==0){
+		   document.f.text.value="";
+		   st = setInterval("moveText()", 500);
+	   }else{
+		   alert("현재 실행중입니다.");
+	   }
+   }
+
+</script>
+</head>
+<body>
+<form name="f">
+<input type="text" name="text">
+<input type="button" value="시작" onclick="moveStart()">
+</form>
+
+</body>
+</html>

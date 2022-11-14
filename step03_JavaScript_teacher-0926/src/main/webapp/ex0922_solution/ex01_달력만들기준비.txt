@@ -1,0 +1,46 @@
+-달력만들기
+
+ 1.현재날짜구하기 ( today = new Date() )
+
+ 2. 현재 달의 1일의 요일을 구하기
+    ex)  a = new Date(년, 월 , 1 )
+         a.getDay() => 요일의 숫자가 나온다.
+
+ 3.현재 달의 마지막 일수를 구한다.
+   ex) endDay = [31,28,31,30 ..... 31];
+       현재달의마지막일자 = endDay[today.getMonth()]
+
+
+ 4. 현재 달의 주 수(몇주)를 구하기
+    var hang = Math.ceil((현재달의1일의요일 + 현재달의마지막일)/7)
+
+   var date=1 // 1부터 마지막일자까지 증가하면서 출력해줄 변수
+   var start=0; //첫행의 시작점을 찾기위해 필요한 변수
+
+ 5. 테이블에 화면 출력
+   for( ; ; ){//행(tr) - hang의길
+     for( ; ; ){열(td) -  7번
+        if(start < 1일의요일){
+           ★찍기
+           start++; 
+        }else if(date > 현재달의마지막일수){
+           ※찍기 
+        }else if(date == today.getDate()){
+           현재날자에빨간색찍기
+           date++;
+        }else{
+           숫자(date)찍기
+           date++;
+        } 
+     }
+
+   } 
+
+   
+
+
+
+
+
+
+

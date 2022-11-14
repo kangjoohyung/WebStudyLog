@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+function todayCheck(){
+	let today=new Date();
+	//현재 날짜를 가져와서 년, 월, 일 넣는다.
+	document.f.ey.value=today.getFullYear();
+	document.f.em.value=today.getMonth()+1;
+	document.f.ed.value=today.getDate();
+}
+function dateGap(fr){ //fr은 form객체를 전달받은 인수
+	//앞에 있는 년, 월, 일 값을 읽어서 날짜로 만든다
+	let startDate=new Date(fr.sy.value,fr.sm.value,fr.sd.value);
+	//뒤에 있는 년, 월, 일 값을 읽어서 날짜로 만든다
+	let endDate=new Date(fr.ey.value,fr.em.value,fr.ed.value);
+	/*
+	(날짜-날짜)=>ms초
+	(날짜-날짜)/1000=>초!
+	(날짜-날짜)/1000/60=>분
+	(날짜-날짜)/1000/60/60=>시
+	(날짜-날짜)/1000/60/60/24=>일
+	*/
+	let gap=endDate-startDate;
+	alert((gap)/1000/60/60/24+"일이 지났습니다");
+}
+</script>
+</head>
+<body onload="todayCheck()">
+<h1>두 날짜의 Gap</h1>
+<form action="" name="f">
+<input type="text" name="sy" size="4">년
+<input type="text" name="sm" size="2">월
+<input type="text" name="sd" size="2">일
+
+<input type="text" name="ey" size="4">년
+<input type="text" name="em" size="2">월
+<input type="text" name="ed" size="2">일
+
+<input type="button" value="계산하기" onclick="dateGap(form)">
+<!-- 여기서 this는 버튼을 의미, 여기서는 별 필요없음/form 도 예약어:form이 전달됨 -->
+</form>
+
+</body>
+</html>

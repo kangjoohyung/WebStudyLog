@@ -1,0 +1,46 @@
+<!DOCTYPE HTML >
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+   <script type="text/javascript">
+     function imgSrc(imgName){
+    	 document.images[0].src = "img/"+imgName;
+     }
+     
+     function imgOver(th){
+    	 th.width *=2;
+    	 th.height *=2;
+     }
+     
+     function imgOut(th){
+    	 th.width /=2;
+    	 th.height /=2;
+     }
+   </script>
+ 
+ </head>
+
+ <body>
+ <img src="img/cat.gif" /><br/><br/>
+
+<span onclick="imgSrc('monkey.gif')">[ 원숭이 ]</span> &nbsp;&nbsp;
+<span onclick="imgSrc('lion.gif')">[ 사자 ]</span> &nbsp;&nbsp;
+<span onclick="imgSrc('cat.gif')">[ 고양이 ]</span> &nbsp;&nbsp;
+<span onclick="imgSrc('dog.gif')">[ 강아지 ]</span> &nbsp;&nbsp;
+  
+<hr color="red"/>
+
+<img src="img/monkey.gif"  width="70" height="60" onMouseover="imgOver(this)" onmouseout="imgOut(this)"/>&nbsp;&nbsp;
+
+<img src="img/cat.gif" width="70" height="60" onMouseover="imgOver(this)" onmouseout="imgOut(this)"/>&nbsp;&nbsp;
+
+<img src="img/dog.gif" width="70" height="60" onMouseover="imgOver(this)" onMouseover="imgOver(this)" onmouseout="imgOut(this)" />&nbsp;&nbsp;
+
+<img src="img/lion.gif" width="70" height="60" onMouseover="imgOver(this)" onMouseover="imgOver(this)" onmouseout="imgOut(this)"/>&nbsp;&nbsp;
+ 
+ </body>
+</html>

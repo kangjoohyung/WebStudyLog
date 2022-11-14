@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+//바탕색 준비
+let arrColor=["red","green","blue","skyblue","pink"];
+//0.1초마다 바탕색이 순서대로 변경되도록 한다
+//만약 마지막 색상이되면 다시 처음부터 시작한다.
+let i=0;
+let st;
+
+function bColor(){
+	console.log(i);
+	document.body.style.backgroundColor=arrColor[i];
+	i++;
+	if(i==arrColor.length) i=0;
+	st=setTimeout("bColor()",500);
+}
+</script>
+</head>
+<body onload="bColor()">
+<a href="#" onclick="clearTimeout(st)">멈추기</a>
+
+</body>
+</html>

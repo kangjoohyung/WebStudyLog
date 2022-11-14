@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+//javascript 영역으로 javascript 문법이 적용된다.
+//위치는 head든 body든 어디에서든지 열거나 추가로 열수있다. 주로 헤드,맨위에 열거나 아니면 맨 아래에 열기도함
+//자동완성 어시스트 기능은 추가하면 나옴...다른 시간에 할예정
+//잘안나올때는 브라우저-개발자도구 에서 console확인할것.
+
+//브라우저에 출력하고싶다(javaScript에서 html 태그를 사용할 수 있다)
+document.write("난 어디에 나오니?<br>"); // 아래 html보다 가장 위에 나온다. System.out.print()과 비슷한 역할
+document.write("<h4 style='color:red'>신기하다</h4>");//결국 "속에서 html로 작용한다. 태그도 그대로사용, ""대신''로 쓰는듯.
+</script>
+</head>
+<body>
+<h3 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"> 오늘은 즐거운 금요일</h3>
+
+<script type="text/javascript">
+document.write("<h4> 잘 나온다....</h4>");
+</script>
+
+<h2 onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">나도 적용받고 싶다</h2>
+
+<script type="text/javascript">
+//마우스를 올렸을때 기능-함수만들기
+function mouseOver(th){//th는 변수이다. 전달되는 this를 받는 변수이다.
+	//h3태그에 border 디자인 추가
+	//script 내에서는 inline과 다르게 this 사용 안됨 this.style.border='double red 5px';
+	//그래서 위에 함수에 this넣고 여기function 인수에 th를 넣는다.
+	
+	console.log("th="+th);
+	
+	th.style.border='double red 5px';
+	th.style.fontFamily='궁서체';
+}
+//마우스를 out했을때 기능
+function mouseOut(th){	
+	//h3태그에 border 디자인 제거
+	th.style.border="none"; //하나일땐 '',""둘다 되는듯
+}
+</script>
+	
+</body>
+</html>

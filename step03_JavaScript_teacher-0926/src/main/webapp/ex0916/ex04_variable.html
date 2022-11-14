@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+  /*
+     변수 선언 : var  vs const , let -( ES6에서 추가 )키워드를 사용할수 있다 
+     
+     -변수 선언 방법
+        var 변수이름 ;
+        var 변수이름 = 값 ; 
+        
+        * var 키워드는 생략이 가능 
+        * 값을 할당 받으면 사후에 타입 결정된다. 그래서 하나의 변수에 다양한타입의 값을 저장
+     
+  */
+
+   document.write("<h2>변수에 대해 알아보자 </h2>");
+   var a;
+   var b=20; //number
+   var c ='희정'; //string
+   d=3.14;  // var 키워드 생략  -> number
+   
+   //브라우져에 변수의 값을 출력해보자.
+   document.write("<h3>");
+   document.write("a = " + a  + " , " + ( typeof a ) +"<br>");
+   document.write("b = " + b  + " , " + ( typeof b ) +"<br>");
+   document.write("c = " + c  + " , " + ( typeof c ) +"<br>");
+   document.write("d = " + d  + " , " + ( typeof d ) +"<br>");
+  
+   document.write("</h3>");
+   
+   //값 변경을 해보자 
+   a = new String("안녕"); //object
+   b = "신기하다."; //string
+   c = new Array(1,3,true,"하이", 3.5); //object
+   d= false;//boolean
+   
+   document.write("<hr><h3> 값변경 후 <p>");
+   document.write("a = " + a  + " , " + ( typeof a ) +"<br>");
+   document.write("b = " + b  + " , " + ( typeof b ) +"<br>");
+   document.write("c = " + c  + " , " + ( typeof c ) +"<br>");
+   document.write("d = " + d  + " , " + ( typeof d ) +"<br>");
+  
+   document.write("</h3>");
+   
+   /*
+      동일한 이름의 변수를 또 선언 할수 있을까?? - OK
+      변수를 선언전에 사용할수 있을까??	- OK	
+       : 이러한 이유는 자바스크립는 변수를 메모리에 올리는 과정이
+          호이스팅이라는 개념을 적용한다. 
+          호이스팅이라는 것은 객체, 변수, 함수를 메모리에 올리는
+          과정을 뜻함.  이따 자바스크립트는  객체, 변수, 함수 것들을
+    	  페이지가 로딩하기전에 먼저 선언된 객체, 변수, 함수를 먼저 올린다.   
+		   
+	*/	   
+   var a ="동일한이름 변수 가능해?";
+   document.write("<hr><h3> 동일한 이름 변수 선언 <p>");
+   document.write("a = " + a  + " , " + ( typeof a ) +"<br>");
+   document.write("addr = " + addr  + " , " + ( typeof addr ) +"<br>");
+   document.write("</h3>");
+   
+   
+   var addr="오리역";
+   
+   document.write("<hr><h3> 변수 선언후에... <p>");
+   document.write("a = " + a  + " , " + ( typeof a ) +"<br>");
+   document.write("addr = " + addr  + " , " + ( typeof addr ) +"<br>");
+   document.write("</h3>");
+   
+   
+   /*
+     함수 선언 (함수안에서 선언된 변수는 지역변수이다. -  선언된 함수내부에서만 접근가능)
+      : 만약 함수안에서 변수를 선언할때 var 키워드를 생략하면 전역변수.
+      : 지역변수와 전역변수의 이름이 같으면 this. 으로 구분한다. 
+      
+   */
+   function test(){
+     var a=50; //전역변수와 지역변수이름을 동일!! 	  
+     var phone="111-2222"; //지역변수
+     age =30; //var를 생략하면서 전역변수가 된다!!!
+     
+     document.write("<hr><h3> 함수안에서 변수를 사용해 보자 <p>");
+     document.write("a = " + a  + " , " + ( typeof a ) +"<br>");
+     document.write("this.a = " + this.a  + " , " + ( typeof this.a ) +"<br>");
+     
+     
+     document.write("phone = " + phone  + " , " + ( typeof phone ) +"<br>");
+     document.write("age = " + age  + " , " + ( typeof age ) +"<br>");
+     document.write("</h3>");
+     
+   }
+   
+   
+   function test2(){
+	   //document.write("phone = " + phone  + " , " + ( typeof phone ) +"<br>"); //fail
+	   document.write("age = " + age  + " , " + ( typeof age ) +"<br>"); //ok
+   }
+   
+   
+</script>
+
+<script type="text/javascript">
+    //함수를 호출
+    test();
+    //함수밖에서 함수 내부에서 선언된 변수 호출해보자.
+    //document.write("phone = " + phone  + " , " + ( typeof phone ) +"<br>"); //fail
+    document.write("age = " + age  + " , " + ( typeof age ) +"<br>"); //ok
+    document.write("<hr color='red'>");
+    test2();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

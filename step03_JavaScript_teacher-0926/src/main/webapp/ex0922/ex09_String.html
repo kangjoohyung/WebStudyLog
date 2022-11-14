@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>String 객체 메소드 알아보기 </h2>
+<script type="text/javascript">
+   let str = "abcd abcd abcd";
+   let str2 = new String("abcd abcd abcd");
+   document.write("<h3>");
+   document.write(`str = ${str} , type = ${typeof str}<br>`);
+   document.write(`str2 = ${str2} , type = ${typeof str2}<br>`);
+   
+   document.write(`str==str2 : ${str==str2}<br>`); //값만비교
+   document.write(`str===str2 : ${str===str2}<hr>`);//값+type비교
+   
+   /*
+       charAt(index) : index에 해당하는 문자를 리턴(index는 0부터시작)
+                       index가 없으면 공백
+   */
+   document.write(`str.charAt(0) = ${str.charAt(0)}<br>`);
+   document.write(`str.charAt(3) = ${str.charAt(3)}<br>`);
+   document.write(`str.charAt(7) = ${str.charAt(7)}<br>`); 
+   
+   document.write(`str.charAt(30) = ${str.charAt(30)}<hr>`);
+   
+   /*
+     indexOf(문자열) :  문자열의 위치 index를 리턴.- 왼쪽부터 
+                        찾는 문자열이 없으면 -1 리턴
+                        
+    indexOf(문자열,시작위치) : 문자열을 시작위치에서부터 찾는다. 
+   */
+   document.write(`str.indexOf('c') = ${str.indexOf('c')}<br>`); 
+   document.write(`str.indexOf('bc') = ${str.indexOf('bc')}<br>`); 
+   document.write(`str.indexOf('f') = ${str.indexOf('f')}<br>`); 
+   
+   document.write(`str.indexOf('c',4) = ${str.indexOf('c',4)}<hr>`); 
+   
+   
+   /*
+   lastIndexOf(문자열) :  문자열의 위치 index를 리턴.- 오른쪽부터 
+                          찾는 문자열이 없으면 -1 리턴
+                      
+  lastIndexOf(문자열,시작위치) : 문자열을 시작위치에서부터 찾는다. 
+ */
+ document.write(`str.lastIndexOf('c') = ${str.lastIndexOf('c')}<br>`); 
+ document.write(`str.lastIndexOf('bc') = ${str.lastIndexOf('bc')}<br>`); 
+ document.write(`str.lastIndexOf('f') = ${str.lastIndexOf('f')}<br>`); 
+ 
+ document.write(`str.lastIndexOf('c',4) = ${str.lastIndexOf('c',4)}<hr>`); 
+ 
+ /*
+    문자열에서 일부분 추출하기 
+     1) substring(index1, index2) 
+           : index1부터 index2까지 문자열 리턴 - 항상 index2는 index1보다 커야한다.
+           
+     2) slice(index1, index2)
+           : index1부터 index2까지 문자열 리턴 - 항상 index2는 index1보다 커야한다.
+     
+     3) substr(index, length )
+          : index부터 length 만큼 문자열 리턴
+          
+       1),2),3)은 모두 두번째인수를 생략하면 index1부터 끝까지 문자열 리턴.
+ */
+ 
+ document.write(`str.substring(0,3) = ${str.substring(0,3)}<br>`); 
+ document.write(`str.substring(1,3) = ${str.substring(1,3)}<br>`); 
+ document.write(`str.substring(3,3) = ${str.substring(3,3)}<p>`); 
+ 
+ document.write(`str.slice(0,3) = ${str.slice(0,3)}<br>`); 
+ document.write(`str.slice(1,3) = ${str.slice(1,3)}<br>`); 
+ document.write(`str.slice(3,3) = ${str.slice(3,3)}<p>`);
+ 
+ document.write(`str.substr(0,3) = ${str.substr(0,3)}<br>`); 
+ document.write(`str.substr(1,3) = ${str.substr(1,3)}<br>`); 
+ document.write(`str.substr(3,3) = ${str.substr(3,3)}<p>`);
+ 
+ document.write(`str.substring(8) = ${str.substring(8)}<br>`); 
+ document.write(`str.slice(8) = ${str.slice(8)}<br>`); 
+ document.write(`str.substr(8) = ${str.substr(8)}<hr>`); 
+ 
+ /*
+   split("문자열") : 문자열을 기준으로 문자열을 분리 - 결과 배열
+ */
+ let result = str.split("bc");
+ document.write(`result.length = ${result.length}<br>`); 
+ 
+ for(let i=0; i < result.length ; i++){
+	 document.write(result[i]+"<br>");
+ }
+ 
+ document.write(`str.length = ${str.length}`);
+ 
+   document.write("</h3>");
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

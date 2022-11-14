@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html >
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>New Web Project</title>
+		
+	<!-- 
+	  전송된 id값을 받기 
+	    : html은 전송은 할수 있으나 받는 능력이 없다.
+	      그래서 backEnd언어가 필요하다. ex) jsp&servlet or php or asp 
+	      만약 jsp&servlet 였다면  String id = request.getParameter("id");
+	 -->	
+	<script type="text/javascript">
+	   function idResult(){
+		   //현재 id박스에 있는 값을 읽어서 
+		   let idValue = document.f.id.value;
+		   
+		   //부모창(open에 의해서 열린 창이 부모창을 칭할때 opener 키워드사용)의 id박스에 넣고 
+		   opener.document.member.id.value = idValue;
+		   
+		   
+		   //현재창을 닫는다. 
+		   self.close();
+	   }
+	
+	</script>	
+		
+	</head>
+	<body>
+	<form name="f">
+	  <table>
+	  	<tr>
+	  		<th colspan="2" bgcolor="yellow"> ID 중복 체크 </th>
+	  	</tr>
+	  	<tr>
+	  		<th>ID</th>
+	  		<td>
+	  			<input type="text" name="id" />
+	  			<input type="button" value="사용하기" onclick="idResult()" />
+	  		</td>
+	  	</tr>  	
+	  </table>
+	 </form>	
+	</body>
+</html>
+

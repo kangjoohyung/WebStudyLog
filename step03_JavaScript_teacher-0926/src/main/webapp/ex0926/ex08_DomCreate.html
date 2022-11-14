@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+  div{width: 300px; height:200px; border: 1px red solid;}
+</style>
+
+<script type="text/javascript">
+   onload = function(){
+	   //이벤트등록
+	   let index=0;
+	   document.getElementById("create").onclick = function(){
+		   //alert(1)
+		   //div영역에서 <h3>재미있다</h3> 만들어서 추가한다.
+		  /* let h3 = document.createElement("h3");
+		   let text = document.createTextNode("재미있다.");
+		   
+		   //속성 추가
+		   h3.setAttribute("id" , "id" + index++);//속성  id="id1"
+		   
+		   //h3에 text를 추가
+		   h3.appendChild(text);
+		   
+		   //div 영역에서 h3 넣기 
+		   document.getElementById("result").appendChild( h3 ); */
+		   
+		   //////////////////////////////////////////////////////////////
+		   let str="<img src='../ex0923/img/cat.gif'><h3 id='id"+ index++ +"'>jquery 내일해요~</h3>";
+		   document.getElementById("result").innerHTML += str;
+	   }
+	   
+	   document.getElementById("delete").onclick = function(){
+		   alert(11)
+		   //삭제 --> 부모대상.removeChild(삭제대상)
+		   let divE = document.getElementById("result");
+		   
+		  // divE.removeChild(divE.firstChild); //
+		 // divE.removeChild(divE.firstChild.nextSibling); //
+		 
+		 divE.removeChild(divE.lastChild.previousSibling); //
+		   
+	   }
+	   
+	   
+   }
+
+</script>
+</head>
+<body>
+<h2>Dom 생성 및 삭제 </h2>
+<input type="button" value="생성하기" id="create"/>
+<input type="button" value="삭제하기" id="delete"/>
+<p>
+<div id="result"></div>
+
+</body>
+</html>

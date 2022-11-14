@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+  let state = false ; // 버튼을 클릭해서 실행중인지를 체크하는 상태변수
+                   //(false이면 클릭전, true이면 클릭된상태)
+  let intervalStop;     
+  
+   //시작을 클릭했을때
+   function startTime(){ 
+	 if(state){
+		 console.log("state = " + state)
+		 return; //startTime함수를 빠져나라가.
+	 }  
+	 
+      state=true; //눌렸다...
+      //intervalStop = setInterval("test()", 1000);
+   intervalStop =  setInterval(() =>{ 
+    	  let today =  new Date();
+   		 //시작을 클릭하면
+   		   //현재 시, 분, 초를 구한다.
+   		  let h = today.getHours();//18
+   		  let m = today.getMinutes();
+   		  let s = today.getSeconds();
+   	      
+   	      //시를 기준으로 AM , PM으로구분한다.
+   	      let str="AM";
+   	      
+   	      if(h>=12){
+   	    	  str="PM";
+   	    	  if(h > 12) //13이상
+   	    	       h-=12; //h=h-12;
+   	      }
+   	      
+   	      
+   	      	      
+   	      //시, 분 , 초가 한자리인지를 체크해서 한자리이면 앞에 0붙혀서 2자리로 출력한다.
+   	      if(h<10) h = "0"+h;
+   	      if(m<10) m = "0"+m;
+   	      if(s<10) s = "0"+s;
+   	      
+   	      //구한 시분초를 text박스에 넣는다.  -> 1초마다 반복한다.
+   	      //document.f.time.value = str+" " + h +" : " + m +" : " + s ;
+   	      
+   	       document.getElementById("time").value = str+" " + h +" : " + m +" : " + s ;
+   	       
+   	      document.getElementById("aa").innerText = str+" " + h +" : " + m +" : " + s ;
+      }, 1000);
+   }//startTime 함수끝
+   
+   
+  
+  
+   
+   //중지를 클릭했을때
+   function endTime(){
+	   clearInterval(intervalStop); //중지
+	   state=false;
+   }
+</script>
+</head>
+<body>
+<form name="f">
+ <input type="text" name="time"  id="time"/>
+ <input type="button" value="시작" onclick="startTime()"/><!-- 인수로 전달할수 있는 키워드 this, form -->
+ <input type="button" value="중지" onclick="endTime()"/>
+</form>
+
+<h3 id="aa" >되니</h3>
+
+</body>
+</html>
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>변수선언방버 - let 와 const : ES6 </h1>
+<script type="text/javascript">
+  let a;
+  let b=10;
+  let c="희정";
+  d =3.14 ;// var키워드 가 생략됨
+
+  
+  document.write("<h3>");
+  document.write("a = " + a +" , " + (typeof a) +"<br>");
+  document.write("b = " + b+" , " + (typeof b) +"<br>");
+  document.write("c = " + c +" , " + (typeof c) +"<br>");
+  document.write("d = " + d +" , " + (typeof d) +"<br>");
+  document.write("window.d = " + window.d +" , " + (typeof window.d) +"<br>");
+  document.write("window.c = " + window.c +" , " + (typeof window.c) +"<br>");
+  
+  window.alert("ddd");
+  
+  document.write("</h3>");
+  
+  //동일한 이름의 변수를 선언해보자.
+  //let a=200; //동일한이름선언 안된다!!!
+  
+  //선언전에 변수를 사용해보자. -  let는 선언 전에 사용불가
+  /*document.write("<h3>");
+  document.write("addr = " + addr +" , " + (typeof addr) +"<br>");
+  document.write("</h3>");
+  
+  let addr="오리역";*/
+  
+  ///////////////////////////////////////
+  //js는 함수안에서 선언된 변수(var)의 scope은 블록당 아니라 함수scope이다 
+  function test(){
+	  document.write("<hr>");
+	  document.write("<h3>test()힘수안에서 변수 <br>");
+	  //document.write("1. message =" +message +", "+ (typeof message) +"<br>");
+	  
+	  {
+		  //var message="js변수 어럽다~"; //OK
+		  let message="js변수 어럽다~"; //변수의 scope의 블럭당{} 이다 
+		  document.write("2. message =" +message +", "+ (typeof message) +"<br>");
+	  }
+	  
+	  //document.write("3. message =" +message +", "+ (typeof message) +"<br>");
+	  
+	  window.document.write("</h3>");
+  }//함수끝
+  
+  
+   //함수 호출해보자.
+   test();
+  
+  ////////////////////////////////////////////////
+  const   PHONE=111; //상수이다, 고정값 = 값변경불가, 반드시초기화 ㅣ필수
+  
+  
+  document.write("<hr>");
+  document.write("<h3>상수 - const <br>");
+  document.write("PHONE =" +PHONE +", "+ (typeof PHONE) +"<br>");
+  
+  //값 변경해보자
+  //PHONE=222; 상수이므로 값변경불가
+  
+  
+  document.write("</h3>");
+  
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

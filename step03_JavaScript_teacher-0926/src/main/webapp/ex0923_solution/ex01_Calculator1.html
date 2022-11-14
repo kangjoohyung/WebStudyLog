@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    table{width:200px;height: 180px ; border:solid red 1px; 
+       border-collapse: collapse;}
+     input[name=input]{width:200px; height:30px ; text-align: right;}
+     td{width:50px; height:60px ; }
+     input[type=button]{width:50px;height:60px}
+     input[type=reset]{ width:150px ;height:60px}
+     
+      </style>
+      
+  <script>
+    function inputAdd(th){ //button객체를 전달 - this
+       document.f.input.value   += th.value ;
+	}
+    
+
+	function resultAdd(fr){ //form객체 전달
+     //fr.input.value = eval(fr.input.value);//eval함수는 인수로 전달된 문자열을 자바스크립코드로 해석해주는기능
+     
+     //eval()함수가 보안적인 측면에서 취약점이 있기에 개선책으로 직접 Function을 생성해서 구현한다.
+      fr.input.value  = new Function("return " + fr.input.value)();
+	}
+
+	function backSpace(fr){ //form전달
+      var str = fr.input.value;
+	  var word = str.substr(0, str.length-1);
+	   fr.input.value = word;
+	}
+  </script>
+ </head>
+ <body>
+ <form name="f">
+  <table>
+  <caption>계산기</caption>
+  <tr>
+	<td colspan="4"><input type="text" name="input"></td>
+  </tr>
+  <tr>
+	<td><input type="button" value="7" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="8" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="9" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="*" onclick="inputAdd(this)"></td>
+  </tr>
+  <tr>
+	<td><input type="button" value="4" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="5" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="6" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="/" onclick="inputAdd(this)"></td>
+  </tr>
+  <tr>
+	<td><input type="button" value="1" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="2" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="3" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="+" onclick="inputAdd(this)"></td>
+  </tr>
+  <tr>
+	<td><input type="button" value="0" onclick="inputAdd(this)"></td>
+	<td><input type="button" value="=" onclick="resultAdd(form)"></td>
+	<td><input type="button" value="." onclick="inputAdd(this)"></td>
+	<td><input type="button" value="-" onclick="inputAdd(this)"></td>
+  </tr>
+  <tr>
+	<td colspan="3"><input type="reset" value="지우기" ></td>
+	<td><input type="button" value="<--" onclick="backSpace(form)" ></td>
+  </tr>
+  </table>
+  
+  
+
+ </form>
+ </body>
+</html>
