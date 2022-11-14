@@ -1,0 +1,58 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+
+<script>
+$(function(){
+	$("div").css({width:"200px",height:"100px",border:"solid red 1px"});
+	//이벤트 등록
+	$("[name=name]").focus(function(){
+		//css적용 -선택자 같을때는 this사용가능
+		$(this).css("backgroundColor","pink").css("color","white");
+	})
+	.blur(function(){
+		//글자색은 검정, 바탕색은 흰색
+		//$(this).css({backgroundColor:"white",color:"black"}); //jquery문법
+		
+		//자바스크립트 문법으로 css적용
+		this.style.backgroundColor="white";
+		this.style.color="black";
+		//입력한 값을 읽어온다
+		let v=$(this).val();//jq
+		let v2=this.value; //js
+		
+		console.log("$(this)="+$(this));//jq
+		console.log("this="+this);//js
+		//div영역에 추가하고
+		//$("#result").text(v+"/"+v2);//jQuery
+		//javaScript
+		let str=$("#result").html()+v+"/"+v2+"<br>";
+		$("#result").html(str);
+		//text박스 내용을 지운다.
+		//$(this).val(""); 
+		this.value=""; //상동, javaScript
+	});
+})
+	
+</script>
+</head>
+<body>
+<h1>focus 와 blur 이벤트</h1>
+
+<form>
+   이름 : <input type="text" name="name">	
+ </form>	
+<p>
+<div id="result"></div>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link  rel="stylesheet" type="text/css" href="css/basic.css"  />
+<style type="text/css">
+.poster {
+	width : 150px;
+	height : 150px;
+}
+a{text-decoration: none}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+	1)미리보기 재생되게 해오기
+	2)찜하기 -> localStorage에 key,value 저장(key는 상품번호, value는 이름,이미지주소(~.jpg),가격
+	3)찜리스트에 나오게 : 정보들 표시(포스터,상품번호,이름,가격), 삭제버튼작동, 가격표시되게
+	**.on("~",function(){})으로 써야함
+	
+3. 찜LIST를 클릭하면 cartList.html 문서에서....
+     제공된 화면처럼 정보를 가져와서 출력한다.
+
+4. 삭제를 클릭하면
+     localStorage에서 그 정보를 삭제하고 화면을 재구성한다.
+	-on()함수로 동적 element에 기능을 추가할 때 
+	$(부모selector).on("이벤트종류","이벤트주체",function(){});
+	$(documnet).on("click","이벤트주체->삭제버튼",function(){}); //이 함수로 사용
+*/
+
+
+$(function(){
+	function cartList(){
+		let totalPrice=0;
+		let str="";
+		for(let i=0; i< localStorage.length ; i++){
+			let key=localStorage.key(i); 
+			let arr=localStorage.getItem(key).split(",");
+			str+=`<tr><td><img src="${arr[1]}" class="poster" /></td>
+			<th>${key}</th><th>${arr[0]}</th><th>${arr[2]}</th>
+			<td><button type='button' id='${key}' name="delItem">삭제</button></td></tr>`;
+			
+			totalPrice+=Number(arr[2]);
+		}//for문끝
+		
+		//alert(str)
+		$("#content").html(str);
+		
+		$("#price").html(`주문가격 : ${totalPrice}원`);
+	}//cartList()끝
+	
+	cartList();
+	
+	//삭제를 클릭했을때 기능
+	$(document).on("click","[name=delItem]", function (){
+		if(confirm("정말 삭제하실래요?")){
+			//localStorage에 있는 정보를 삭제
+			//alert($(this).attr("id"))
+			localStorage.removeItem( $(this).attr("id")) ;
+			//alert($(this).parent().parent().find("td:eq(1)").next().text());
+			//let key=$(this).parent().parent().find("td:eq(1)").next().text();
+			//localStorage.removeItem(key);
+			cartList();
+		}
+		
+	});
+	
+	
+})//jQuery끝
+/*
+$(function(){
+	//localStorage 정보 읽어오기
+	function refreshPage(){
+		for(let i=0; i<localStorage.length; i++){
+			let key=localStorage.key(i);//1001
+			let value=localStorage.getItem(key);//쿵푸팬더,img/movie_image2.jpg,3000
+			
+			//value의 값을 기준으로 분리
+			let arr=value.split(",");
+			
+			str+=`<tr>`;
+			str+=`<td><img src="${arr[1]}"></td>`;
+			str+=`<td>${key}
+			str+=`</tr>`;
+		}
+	}
+})*/
+
+</script>
+</head>
+<body>
+		<article class="main">
+		<section>
+			<table width="80%"  align="center"  >
+			<caption class="caption">찜 리스트</caption>
+			<thead>
+				<tr><th>이미지</th><th>상품번호</th><th>상품이름</th><th>가격</th><th>삭제</th></tr>
+			</thead>
+			<tbody id="content">
+			</tbody>
+			</table>
+		</section>
+		<section  class="totalprice" id="price">
+			
+		</section>
+		<section class="link">
+			<table   align="center">
+			<tr><td align="center">
+				<a href="">주문하러 가기</a> 
+				<a href="index.html">DVD LIST</a> 
+			</td></tr>
+			</table>
+		</section>
+		</article>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html><html>
+   <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Insert title here</title>
+	
+   <script src="../js/jquery-3.6.1.min.js"></script>
+    
+   <script>
+   $(function(){
+	   //let arr=[{key:value, key:value},{},...]; //제이손 형태
+	   let arr=[
+		   {href:"https://www.naver.com",title:"네이버"},
+		   {href:"https://www.daum.net",title:"다음"},
+		   {href:"https://www.google.com",title:"구글"},
+		   {href:"https://www.kosta.com",title:"코스타"},
+		   {href:"https://www.hrd.go.kr",title:"노동부"},
+		   {href:"https://www.nate.com",title:"네이트"}
+		   ];
+	   let str="";
+	   $.each(arr,function(index,item){
+		  //alert(index +"="+item.href+","+item.title);
+		  //<a href="주소">title</a> 여러개 만들기
+		  
+		  //str+="<a href='"+item.href+"'>"+item.href+"</a></br>";
+		  str+=(`<a href="${item.href}">${item.title}=${item.href}</a></br>`);
+		  
+	   });
+	   $("div").html(str);
+	   
+	   //css : a에 밑줄제거
+	   $("a").css("textDecoration","none");
+	   
+   });//readyEnd
+
+		
+  </script>  
+  </head>
+ <body>
+    <h3> each를 통한 동적 DOM 생성 </h3>
+	<div></div>
+ </body>
+</html>

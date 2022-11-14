@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+ <style type="text/css">
+   /*img{width: 100px; height: 100px}*/
+ </style>
+ <script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+  $(function(){
+	 // $("img").mouseover(function(){}).mouseout(function(){});
+	 
+	 // $("img").on("mouseover", function(){} ).on("mouseout", function(){});
+	 
+	 //$("img").on({event종류: function(){} ,event종류: function(){} ,... });
+	 
+	 $("img").on({
+		 mouseover:function(){
+			let nowSrc =  $(this).attr("src");
+			 //console.log("nowSrc = " + nowSrc);
+			 
+			 //현재 가로, 높이
+			 let w = $(this).attr("width");
+			 let h = $(this).attr("height");
+			 
+			 
+			 let cw = $(this).css("width");
+			 let ch = $(this).css("height");
+			 
+			 console.log("w = " + w +" , h = " + h);
+			 console.log("cw = " + cw +" , ch = " + ch);
+			 
+			 //변경하고싶다.
+			 //$(this).attr("src","img/star.png");
+			 
+			 //이미지 크기도 변경 
+			/* $(this).attr("width","??");
+			 $(this).attr("heiht","??");*/
+			 
+			 //$(this).attr().attr().attr();
+			 
+			 $(this).attr({
+				 src: "img/star.png" ,
+				 width: w*2,
+				 height: h*2 
+			 });
+			 
+		 } , 
+		 mouseout : function(){
+			 //onsole.log(2)
+			 //이미지와 크기를 변경 
+			 
+			 
+			 $(this)
+			 .attr("src" , function(index, currentSrc){
+				 //기능
+				 console.log(index + " = " + currentSrc);
+				 
+				 return "img/heart.png";
+			 })
+			 .attr("width" , function(index, currentW){
+				 console.log(index + " = " + currentW);
+				 return currentW/2;
+			 })
+			 .attr("height", function(index , currentH){
+				 console.log(index + " = " + currentH);
+				 return currentH/2;
+			 });
+			 
+		 }
+	 });
+	 
+	 
+  })//readyEnd
+	
+</script>
+</head>
+<body>
+<h1>Dom요소 속성 추가 </h1>
+<img src="img/heart.png" id="img"  width="50" height="50"/>
+
+</body>
+</html>

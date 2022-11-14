@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+ div{width:300px; height:100px ; border: 1px red solid;}
+</style>
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btnSave").click(function(){
+		let key=$("#s_key").val();
+		let value=$("#s_value").val();
+		
+		if(key==""||value==""){
+			alert("key와 value를 입력해주세요");
+			return; //빠져나가기
+		}
+		//sessionStorage 영역 저장
+		sessionStorage.setItem(key,value);		
+		
+		//text내용 비우기
+		$("#s_key").val("");
+		$("#s_value").val("");
+		$("#s_key").focus();
+
+		getInfo();
+	});//#btnSave.click끝
+	
+	//지우기
+	$("#btnClear").click(function(){
+		//모두 지우기
+		//sessionStorage.clear();
+		
+		//개별지우기
+		let key=prompt("삭제할 key?");
+		sessionStorage.removeItem(key);
+		
+		getInfo();
+	});
+	
+	
+	//sessionStorage영역에 있는 정보 가져오기
+	function getInfo(){
+		let len=sessionStorage.length;
+		let str="저장된 개수:"+len+"<br>";
+		for(let i=0; i<len ; i++){
+			//key찾기
+			let key=sessionStorage.key(i); 
+			//i=0,1,2,...지만 키가 순서대로 있을필요는없음Map비슷(Map도 순서는 무관)
+			
+			let value=sessionStorage.getItem(key);
+			
+			str+=key+":"+value+"<br>";
+		}//for문끝
+		
+		//div영역에 추가
+		$("#result").html(str);
+	}//getInfo()끝
+
+	getInfo();
+});
+   
+</script>
+
+</head>
+<body>
+<h1> sessionStorage Test - 브라우져 시작~종료 될때까지 유지 </h1>
+<form>
+  key : <input type="text" name="s_key" id="s_key"/>
+  value : <input type="text" name="s_value" id="s_value"/>
+  
+ <input type="button"  value="저장하기"  id="btnSave"/>
+ <button type="button" id="btnClear">정보 지우기 </button>
+ <hr>
+ <div id="result"></div>
+</form>
+<a href="ex01_sessionResult.html">session정보 확인하러 가자</a>
+
+
+</body>
+</html>
+
+
+
+
+
+

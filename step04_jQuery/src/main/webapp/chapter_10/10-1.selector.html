@@ -1,0 +1,57 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+	//*면 전부라는 뜻 ? css컬러
+	//$("*").css("color","red");
+	//css에서 font-family javaScript에서 fontFamily
+	//$("li").css("font-family","궁서체");
+	//$("li").css("fontFamily","궁서체");
+	//$("h3,h4").css("border","red 5px double");
+	//하나의 element에 여러개 css 적용 - 메소드 체인문법
+	//$("h3").css("color","white").css("backgroundColor","red").css("border","3px dotted pink");
+	//하나의 element에 여러개 css적용 - css({property:value, property:value,...}); //"" 와 케밥,켐멜에따라 사용가능여부 달라짐
+	//$("h3").css({color:"blue",background-color:"pink",border:"3px dotted orange"}); //케밥 에러남(-소문자 불가)캠맬은 가능
+	//$("h3").css({color:"blue",backgroundColor:"pink",border:"3px dotted orange"});
+	//$("h3").css({"color":"yellow",backgroundColor:"pink",border:"3px dotted orange"});//캠맬은 묶어도상관없음
+	//$("h3").css({color:"blue","background-color":"pink",border:"3px dotted orange"});//묶을땐 케밥도 가능
+	//css의 속성명을 - (케밥)사용하려면 반드시 ""로 묶는다.
+	
+	//아이디로 찾기
+	//$("#tag").css("textDecoration","underline");
+	//클래스로 찾기
+	//$(".div").css({border:"dashed 3px orange"});
+	//하위 element 찾기 - 필터링 되는 애들 앞에 콜론이 있어야됨
+	//$("div ol li").css("color","red");
+	//$("div ol li:eq(1)").css("color","red");//li에서 2번째 (배열처럼 0부터 시작)
+	//$("div ol li:gt(1)").css("color","red");//1보다 큰것들
+	//$("div ol li:lt(1)").css("color","red");//1보다 작은것들
+	//$("div ol li:even").css("color","red"); //홀수인듯 (숫자로는 0,짝수)
+	//$("div ol li:odd").css("color","red");//짝수인듯 (숫자로는 홀수)
+	//$("div ol li:last").css("color","red");//마지막
+	//$("div ol li:not(:last)").css("color","red");//반대로(:~~)
+});
+
+</script>
+
+</head>
+<body>
+	
+<h3>jQuery 기본 selector</h3>
+<h4>웹 프로그래밍</h4>
+<div class="div">
+	<ol>
+     	<li>jsp</li>
+		<li id="tag">javaScript</li>
+		<li>jQuery</li>
+		<li>Ajax</li>
+	</ol>
+</div>
+	
+
+</body>
+</html>

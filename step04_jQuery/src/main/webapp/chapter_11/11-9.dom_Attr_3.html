@@ -1,0 +1,43 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	div#bigImage{border:1px solid red;width:200px;height:200px;}
+</style>
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+$(function(){
+	$("img").attr({width:80,height:80});
+	//$().mouseover(function(){})
+	$("div#product>img")
+	.hover(function(){
+		console.log("over");
+		let imgSrc=$(this).attr("src");
+		
+		//div의 가로,세로 구한다
+		let w=$("#bigImage").css("width");
+		let h=$("#bigImage").css("height");
+		
+		//let img=`<img src="${imgSrc}" width="${w}" height="${h}">`;
+		let img=`<img src="${imgSrc}" width=100% height=100%>`;
+		$("#bigImage").html(img);
+		console.log("imgSrc="+imgSrc);
+		
+	},function(){
+		console.log("out");
+	}); //over, out
+});
+</script>
+</head>
+<body>
+	
+<div id="product">
+    <img src="img/android.jpg" />
+    <img src="img/spring.jpg" />
+    <img src="img/unity.jpg" />  
+	  
+    <div id="bigImage"> </div>
+</div>
+</body>
+</html>

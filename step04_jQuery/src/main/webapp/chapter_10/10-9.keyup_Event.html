@@ -1,0 +1,53 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+
+<script>
+	$(function(){
+		$("#pwdConfirm,#pwd").keyup(function(){
+			//alert(1);
+			//pwd와 pwdConfirm의 값이 다르면 div영역에 비밀번호가 다릅니다.
+			if ($("#pwd").val()!=$("#pwdConfirm").val()){
+				$("#lblError").html("<b>비밀번호가 다릅니다</b>")
+				.css("color","red");
+			};
+			//같으면 일치합니다 출력
+			if ($("#pwd").val()==$("#pwdConfirm").val()){
+				$("#lblError").text("비밀번호가 일치합니다").css("color","green");
+			};
+			if ($("#pwd").val()==""){
+				if ($("#pwdConfirm").val()==""){
+				$("#lblError").text("비밀번호를 입력하세요").css("color","black");
+				return;
+			}}
+			if ($("#pwd").val().length != $("#pwdConfirm").val().length){
+				$("#lblError").text("");
+			}
+		});
+	});
+</script></head>
+
+<body>
+  <h1>keyup 이벤트</h1>
+  <table style="border: 1px solid skyblue;">
+        <tr>
+            <td>암호:</td>
+            <td><input type="password" id="pwd" size="20"></td>
+        </tr>
+        <tr>
+            <td>암호확인:</td>
+            <td><input type="password" id="pwdConfirm" size="20"></td>
+        </tr>
+  </table>
+    <div id="lblError">암호를 입력하시오.</div>
+
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<script src="../js/jquery-3.6.1.min.js"></script>
+<script>
+$(function(){
+	//alert(11)
+	/*
+	keyup으로 앞자리에 숫자 입력이 되면서 문자입력이되면 바로 지워지고 6자리가 되면 커서가 뒤로 이동
+	뒷자리도 마찬가지로 설정하고,
+	커서를 빼면(blur)성별이 뒷자리에 맞게 체크가 됨
+	->on코딩/1.숫자만(숫자아니면 지우기) / 2.6자리후 옮기기(뒷자리7자리후 지우기) / 3.성별 자동체크
+	
+	//주민번호 앞자리, 뒷자리 모두 숫자만 가능 - keyup발생할때 숫자유무를 체크해서 아니면 마지막 글자를 지운다.
+	//주민번호 앞자리 keyup이 일어날때마다(발생할때) 6자리가 되면서 커서를 주민번호 뒷자리로 옮긴다.
+	//주민번호 뒷자리가 blur 이벤트가 발생하면 주민번호 첫글자가 1이면 남자, 2이면 여자 성별체크
+	//on~으로 코딩하기
+	*/
+	/*
+	let jumin1v=$("#jumin1").text();
+	let jumin2v=$("#jumin2").val();
+	
+	$("#jumin1").on("keyup",function(){
+		if(jumin1v==1) {
+			alert(11)
+			//if(jumin1v.length==6) $("#jumin1").on("focus",function(){jumin2v;});
+		}
+	});*/
+	//주민번호 앞자리, 뒷자리 모두 숫자만 가능 - keyup발생할때 숫자유무를 체크해서 아니면 마지막 글자를 지운다.
+	$("#jumin1").on("keyup",function(){
+		//alert($(this).val()+"/"+this.value);
+		numberCheck($(this));
+		
+		if(this.value.length>=6){
+			$("#jumin2").focus(); //조건식 ==이것도 빨리치면 안넘어감..>=로바꾸니 괜찮아짐 ->1을 꾹 누르면 여러개가입력됨
+			//this.value.length-1;//연속눌릴때 지우기해보기???
+		}
+	});
+
+	//주민번호 앞자리 keyup이 일어날때마다(발생할때) 6자리가 되면서 커서를 주민번호 뒷자리로 옮긴다.
+	//주민번호 뒷자리가 blur 이벤트가 발생하면 주민번호 첫글자가 1이면 남자, 2이면 여자 성별체크
+	$("#jumin2")
+	.on("keyup",function(){
+		numberCheck($(this));
+	})
+	.on("blur",function(){
+		//주민번호 첫글자
+		let ch=$(this).val().charAt(0);
+		if(ch=="1"||ch=="3") $("#man").prop("checked",true);
+		else if(ch=="2"||ch=="4") $("#woman").prop("checked",true);
+		
+	});
+	//숫자유무를 체크하는 함수
+	function numberCheck(obj){
+		//obj는 위의 넘버체크에서 $(this)로 전달되어 element객체이다(obj.val()로 표시, this였으면obj.value)
+		//alert(obj+"="+obj.val())
+		let v=obj.val();
+		if(isNaN(v)){//true라면 숫자가 아니다
+			let sliceV=v.substr(0, v.length-1);
+			obj.val(sliceV);//빨리적으면 그대로 남는버그?오류?있어서 나중에 다시 체크함
+			
+		}
+	}
+	
+});//jquery끝
+</script>
+</head>
+
+<body>
+  <h1>on 이벤트 </h1>
+  <h4>주민번호를 이용한 성별 체크</h4>
+  <form>
+   주민번호 : 
+<input type="text" id="jumin1" size="6"/> - <input type="text" id="jumin2" size="7" /> <p/>
+성별 : 
+<input type="radio" value="남자" id="man" disabled name="gender" checked="checked"> 남자
+<input type="radio" value="여자" id="woman" disabled name="gender"> 여자
+
+</form>
+</body>
+</html>
+
+
+
+
+
