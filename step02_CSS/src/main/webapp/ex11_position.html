@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+/*	특정 element를 원하는 위치로 이동 - top, right, bottom, left이고
+	이동을 위해서는 position을 함께 사용해야한다. (position사용시 위치 지정도 또해야됨)
+	포지션 사용시 서로 겹치게 나타날수있음
+	
+	absolute :
+	1)0,0에서부터 절대좌표로 이동
+	2)별개의 요소로 취급되어 다른요소들이 당겨짐(영역이 다른듯) 
+	
+	relative : 
+	1)원래 위치에서부터 상대적인 좌표로 이동
+	2)다른 것들은 원래위치에 있음.(다른요소에 영향 없음)
+	
+	fixed : 화면고정-스크롤 내려도 화면에 고정됨, 다른 요소에 영향 없음
+	
+	z-index는 position이 있을때 element들이 겹쳐있으면 순서를 정해준다.
+	숫자값이 클수록 맨 위로 배치된다.*/
+	
+.a{width:300px; height:100px; background-color:red;
+	top:50px; left:130px;
+	position:absolute;
+	z-index: 0;}
+.b{width:300px; height:100px; background-color:green;
+	top:100px; left:50px;
+	position:relative;
+	z-index:1;}
+.c{width:300px; height:100px; background-color:blue;
+	position:relative;
+	z-index:2;}
+	
+h3{width:w00px; height:300px; border:dashed 3px pink;
+	right:10px; top:10px; position:fixed;}
+</style>
+</head>
+<body>
+<div class="a">div영역 1</div>
+<div class="b">div영역 2</div>
+<div class="c">div영역 3</div>
+
+<h3>오늘 본 상품</h3>
+배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>배고파요<p>
+</body>
+</html>

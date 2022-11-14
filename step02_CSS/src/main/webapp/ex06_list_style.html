@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+/*ol{list-style-type:upper-roman;}
+ul{list-style-type: square}*/
+
+/*ul{list-style-image:url("img/live.jpg")}
+ol li ul{list-style-image: url("img/c.gif")}*/
+
+/* 한번에 3개의 속성의 값 넣기 - 순서 상관없다. 3개 다 작성안해도 된다*/
+ul{list-style: url("img/b.gif") inside circle}
+
+</style>
+</head>
+<body>
+<h1>&lt;ol>태그와 &lt;ul>태그</h1>
+
+<!--<ol> 순서있는 목차
+type 붙이면 목차에 번호 붙여짐
+type="1|A|a|I|i"-->
+<h3>순서있는 목차</h3>
+<ol>
+<li>기아 자동차<ol>
+	<li>k3</li><ol>
+		<li>바퀴4개</li></ol>
+	<li>k5</li>
+	<li>k7</li>
+	<li>k9</li></ol></li>
+<li>현대 자동차</li>
+<li>쌍용 자동차</li>
+</ol>
+<hr>
+
+<!--<ul> 순서없는 목차
+type붙이면 목차에 모양 꾸며짐
+type="square|circle|disc"-->
+<h3>순서없는 목차</h3>
+<ul>
+<li>기아 자동차</li><ul>
+	<li>k3</li><ul>
+		<li>바퀴4개</li></ul>
+	<li>k5</li>
+	<li>k7</li>
+	<li>k9</li></ul></li>
+<li>현대 자동차</li>
+<li>쌍용 자동차</li>
+</ul>
+
+</body>
+</html>

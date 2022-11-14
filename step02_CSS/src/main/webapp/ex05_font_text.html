@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+.a{ 
+	font-family:궁서체;
+	font-size:20px;
+	font-weight:bold;
+	font-style:italic;
+	text-indent:50px;
+	line-height:150%; /*줄단위 간격 - 숫자, % 2는 200% 동일*/
+}
+
+/*font는 여러개의 속성을 공백으로 구분해서 적용(style weight size /line-height family) 
+	:보통 다른 속성은 순서에 상관없지만 font는 글꼴이 마지막에 와야한다.
+	line-height 앞에는 슬래쉬(/) 꼭 와야한다.*/
+.b{
+	font: italic bold 20px /150% 궁서체;
+	text-indent : 50px;
+}
+
+.c{
+	letter-spacing: 5px;
+	word-spacing: 10px;
+}
+
+div.c span{color:red; text-transform: uppercase;}
+
+a{text-decoration: none;} <!--밑줄 사라짐-->
+
+/*속성을 설정할때 순서 중요 : link->visited->hover->active를 적용.
+	순서 안지키면 실행 잘 안됨*/
+a:link {color:red} /*한번도 클릭한 적이 없는 경우*/
+a:visited{color:green} /*클릭한 적이 있는 경우-캐시정보 기준*/
+a:hover{text-decoration: underline; font-style: italic; 
+color:orange; font-size:20px} /*마우스를 올렸을때*/
+a:active{color:grey} /*누르고 있을때*/
+
+table{width: 800px; height:200px; border:1px black solid; border-collapse:collapse;}
+td{border: 1px black solid;}
+
+table tr td:first-child{text-align: center; vertical-align:bottom;}
+table tr td:last-child{text-align: right; vertical-align:top;}
+
+</style>
+</head>
+<body>
+<div class="a">
+오늘 css 재미있지요? 과제는 css적용해서 만들어 오셔야 해요. 
+오늘 가기전에 포트폴리어 작성하는 방법 설명드릴께요.
+제가 말하지 않으면 꼭 말씀해주세요. 그리고 1차 미니 프로젝트 
+포트폴리오는 주말까지 만들어서 다음주에 제출해주세요.
+</div>
+<hr>
+<div class="b">
+오늘 css 재미있지요? 과제는 css적용해서 만들어 오셔야 해요. 
+오늘 가기전에 포트폴리어 작성하는 방법 설명드릴께요.
+제가 말하지 않으면 꼭 말씀해주세요. 그리고 1차 미니 프로젝트 
+포트폴리오는 주말까지 만들어서 다음주에 제출해주세요.
+</div>
+<hr>
+<div class="c">
+오늘은 <span>css</span>학습하는 날!<p>
+<span>have a Nice day^^</span>
+</div>
+<hr>
+<a href="http://www.naver.com">네이버</a><p>
+<a href="http://www.daum.net">다음</a><p>
+<a href="http://www.google.com">구글</a><p>
+<a href="http://www.hrd.go.kr">노동부</a><p>
+<a href="http://www.kosta.or.kr">코스타</a></a><p>
+
+<hr>
+<table>
+<tr>
+	<td>CSS 재미있나요?</td>
+	<td>CSS 재미있나요?</td>
+</tr>
+<tr>
+	<td>CSS 재미있나요?</td>
+	<td>CSS 재미있나요?</td>
+</tr>
+</table>
+</body>
+</html>

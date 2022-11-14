@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style>
+.a{background-color:red;}
+
+/*	in-line요소에는 적용안된다
+	: margin-top, margin-bottom, width, height
+	그래서 display속성을 block이나 inline-block으로 바꾸면 된다. */
+	
+.b{background-color:green;
+	margin: 20px 20px 30px 50px;
+	width:200px; height:100px;
+	display:inline-block;}
+.c{background-color:blue;}
+
+#a{background-color:red;}
+#b{background-color:green;
+	margin: 20px 20px 30px 50px;
+	width:200px; height:100px;}
+#c{background-color:blue;}
+</style>
+</head>
+<body>
+<span class="a">span1</span><span class="b">span2</span><span class="c">span3</span>
+<hr>
+<div id="a">div요소 1</div><div id="b">div요소 2</div><div id="c">div요소 3</div>
+
+</body>
+</html>

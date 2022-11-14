@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="EUC-KR">
+		<title>ex0915과제 강주형:회원가입창</title>
+		<style type="text/css">
+			.new tr{border: solid 3px black;}
+			.new th{background-color:pink; border: solid 3px black;}
+			.new{width: 650px; height:300px; border:solid black 3px; border-collapse: collapse;}
+			.new td{border: solid 3px black;}
+			.window{width: 650px; height:80px}
+			.blue{width: 650px; height:30px;background-color:blue; color: white;}
+		</style>
+	</head>
+	<body>
+	<table class="window">
+	<tr><td class="blue">사용자 정보입력</td></tr>
+	<tr><td class="white">안녕하세요. 희정이의 홈페이지를 자유롭게 이용하려면 회원가입을 하셔야 합니다.<br>
+			아래의 사항들을 빠짐없이 기록해 주세요.</td></tr>
+	</table>
+		<form action="" method="post" name="f">
+		<table class="new">
+			<tr>
+				<th>사용자 ID</th>
+				<td colspan="3"><input type="text" name="user_id" id="user_id" maxlength="10">
+					<input type="button" name="user_id_button" value="ID중복확인"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="user_pwd1" id="user_pwd1" maxlength="9"></td>
+				<th>비밀번호 확인</th>
+				<td><input type="password" name="user_pwd2" id="user_pwd2" maxlength="9"></td>
+			</tr>
+			<tr>
+				<th>사용자 이름</th>
+				<td colspan="3"><input type="text" name="user_name" id="user_name" maxlength="10"></td>
+			</tr>
+			<tr>
+				<th>주민등록번호</th>
+				<td colspan="3"><input type="text" name="user_pin_front" id="user_pin_front" maxlength="10">
+					-<input type="text" name="user_pin_back" id="user_pin_back" maxlength="10"></td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td colspan="3"><input type="text" name="user_birth_year" id="user_birth_year" maxlength="10">
+				년 <select name="user_birth_mon" id="user_birth_day">
+				<option value="01">01</option><option value="02">02</option><option value="03">03</option>
+				<option value="04">04</option><option value="05">05</option><option value="06">06</option>
+				<option value="07">07</option><option value="08">08</option><option value="09">09</option>
+				<option value="10">10</option><option value="11">11</option><option value="12">12</option>
+				</select>월<select name="user_birth_day" id="user_birth_day">
+				<option value="01">01</option><option value="02">02</option><option value="03">03</option>
+				<option value="04">04</option><option value="05">05</option><option value="06">06</option>
+				<option value="07">07</option><option value="08">08</option><option value="09">09</option>
+				<option value="10">10</option><option value="11">11</option><option value="12">12</option>
+				<option value="13">13</option><option value="14">14</option><option value="15">15</option>
+				<option value="16">16</option><option value="17">17</option><option value="18">18</option>
+				<option value="19">19</option><option value="20">20</option><option value="21">21</option>
+				<option value="22">22</option><option value="23">23</option><option value="24">24</option>
+				<option value="25">25</option><option value="26">26</option><option value="27">27</option>
+				<option value="28">28</option><option value="29">29</option><option value="30">30</option>
+				<option value="31">31</option></select>일
+			</tr>
+			<tr>
+				<th>우편번호</th>
+				<td colspan="3"><input type="text" name="user_post" id="user_post" maxlength="10">
+					-<input type="text" name="user_post" id="user_post" maxlength="10">
+					<input type="button" value="우편번호검색"></td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td colspan="3"><input type="text" name="user_address" id="user_address" maxlength="28"></td>
+			</tr>
+			<tr>
+				<th>나머지주소</th>
+				<td colspan="3"><input type="text" name="user_address" id="user_address" maxlength="15"></td>
+			</tr>
+			<tr>
+				<th>E-Mail</th>
+				<td colspan="3"><input type="text" name="user_post" id="user_post" maxlength="10">
+				@<select name="user_email" id="user_email">
+				<option value="gmail">gmail.com</option><option value="naver">naver.com</option>
+				<option value="hanmail">hanmail.com</option><option value="self">직접입력</option>
+				</select>
+			</tr>
+			<tr>
+				<th>직업</th>
+				<td colspan="3"><select name="user_job">
+				<option value="it">컴퓨터/정보통신</option><option value="office">회사원</option>
+				<option value="free">프리랜서</option><option value="else">기타</option></select>
+			</tr>
+			<tr>
+				<td colspan="4"><center><input type="submit" value="등록">
+				<input type="reset" value="취소"></center></td>
+			</tr>
+		</table>
+	</form>			
+	</body>
+</html>

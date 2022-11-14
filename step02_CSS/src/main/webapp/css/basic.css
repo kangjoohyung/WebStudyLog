@@ -1,0 +1,56 @@
+@charset "EUC-KR";
+
+/*여기는 css문서이므로 css문법 적용한다*/
+/*css주석입니다.
+	selector,...{속성:값;속성:값;...}
+*/
+h1{color:red; font-family:궁서체;}
+
+/*여러개의 element에 동일한 css적용*/
+h1,h3{border: dashed 3px skyblue;}
+
+/*동일한 element중에서 특정 element만 다른css를 적용하고 싶을때 
+	1)id로 적용하기 - 한 element에 여러개 적용안됨 -> #~(id)
+	2)class로 적용하기 - 한 element에 여러개 적용가능 .~  */
+
+/*id로 적용하기*/
+#a{text-decoration: line-through; border: dashed 3px black;}
+
+/*class로 적용하기*/
+.a{background-color:pink; border: dashed 3px yellow;}
+.b{opacity: 0.5; border-radius:20px; border: dash 3px green;}
+
+/*특정 element를 기준으로 하위 자식요소를 찾는 방법*/
+div p{color:green} /*div태그를 기준으로 모든 하위 p 전부 찾기*/ 
+div>p{color:orange} /*div태그를 기준으로 바로 하위에 있는 p 찾기*/
+
+/*속성으로 element를 찾기 - [속성=value]*/
+[type]{border: 3px double red}
+[type=text]{border: 3px double black}
+
+/* $는 끝으로 끝나는 단어 */
+[name$=d]{background-color:pink; color:white;}
+
+/* ^는 시작하는 단어 */
+[name^=n]{font-size:20px}
+
+table{width:600px; height:800px; border: 3px skyblue outset;
+	border-collapse:collapse;}
+td{border: 1px blue solid; text-align: center;}
+table tr td:first-child {width:100px}
+table tr td:last-child {width:300px}
+
+/*~n:(첫번째 이후부터)배수마다 / ~ : ~번째것만 / ~n+1 연산도가능(+~번째것, 이후부터 ~n배수마다) */
+table tr:nth-child(2n) {background-color: yellow;}
+table tr:nth-child(1) {background-color: red; color:white; font-size:20px; font-weight: bold;}
+body>table>tbody>tr:nth-child(5)>td:nth-child(3){background-color: blue;}
+
+/*예시*/
+div.a{}/*<div class="a"> 찾는다*/
+div .a{}/*.이전 공백 : <div><img class="a"></div>*/
+div > .a{}/*하위요소에~*/
+
+div#b{}/*<div id="b"> */
+div #b{}/*<div><p><h2 id="b"></h2></p></div>*/
+
+h3,div.a , h3>a{}

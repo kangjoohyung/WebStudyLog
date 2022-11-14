@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	/* css영역입니다*/
+	thead{color:red}
+	tbody{color:blue}
+	tfoot{color:green; text-align: center;}
+	
+	table{border:solid red 3px; width:300px; height:200px; border-collapse: collapse;}
+	th,td{border: solid 1px gray;}
+	td{text-align: center;}
+</style>
+</head>
+<body>
+<h1>&lt;table>만들기</h1>
+<table>
+<!--<table border="1" width="300" height="200" cellspacing="0">  --> 
+<thead>
+<tr>
+	<th>이름</th>
+	<th>나이</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>희정</td>
+	<td>20</td>
+</tr>
+<tr>
+	<td>나영</td>
+	<td>30</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+	<td>총인원수</td>
+	<td>2명</td>
+</tr>
+</tfoot>
+</table>
+<hr color="red">
+<table>
+<caption>열병합-colspan="개수"
+</caption>
+<tr>
+<td colspan="2">A</td><!-- th, td속성에 추가 -->
+</tr>
+<tr>
+<td>B</td>
+<td>C</td>
+</tr>
+</table>
+<table>
+<caption>열병합-rowspan="개수"
+</caption>
+<tr>
+<th>A</th>
+<th rowspan="2">C</th>
+</tr>
+<tr>
+<th>B
+</th>
+</table>
+
+<hr color="red">
+<!-- 예제 : 그림파일처럼 만들기 -->
+<table>
+<tr>
+<td colspan="3">a</td>
+</tr>
+<tr>
+<td rowspan="3">b</td>
+<td colspan="2">c</td>
+</tr>
+<tr>
+<td>d</td>
+<td>e</td>
+</tr>
+<tr>
+<td>f</td>
+<td>g</td>
+</tr>
+<tr>
+<td rowspan="4">h</td>
+<td colspan="2">i</td>
+</tr>
+<tr>
+<td>j</td>
+<td>k</td>
+</tr>
+<tr>
+<td>l</td>
+<td>m</td>
+</tr>
+<tr>
+<td>n</td>
+<td>o</td>
+</tr>
+<tr>
+<td colspan="3">p</td>
+</tr>
+</table>
+
+</body>
+</html>

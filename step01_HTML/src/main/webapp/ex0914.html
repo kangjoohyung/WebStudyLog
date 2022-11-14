@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="EUC-KR">
+		<title>ex0914과제 강주형</title>
+		<style type="text/css">
+			tr{border: solid 3px black;}
+			th{background-color:pink; border: solid 3px black;}
+			table{border:solid black 3px; border-collapse: collapse;}
+			td{border: solid 3px black;}
+		</style>
+	</head>
+	<body>
+		<form action="" method="post" name="f">
+		<table>
+			<tr>
+				<th>사용자 ID</th>
+				<td colspan="3"><input type="text" name="user_id" id="user_id" maxlength="10">
+					<input type="button" name="user_id_button"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="user_pwd1" id="user_pwd1" maxlength="9"></td>
+				<th>비밀번호 확인</th>
+				<td><input type="password" name="user_pwd2" id="user_pwd2" maxlength="9"></td>
+			</tr>
+			<tr>
+				<th>사용자 이름</th>
+				<td colspan="3"><input type="text" name="user_name" id="user_name" maxlength="10"></td>
+			</tr>
+			<tr>
+				<th>주민등록번호</th>
+				<td colspan="3"><input type="text" name="user_pin_front" id="user_pin_front" maxlength="10">
+					-<input type="text" name="user_pin_back" id="user_pin_back" maxlength="10"></td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td colspan="3"><input type="text" name="user_birth_year" id="user_birth_year" maxlength="10">
+				년 <select name="user_birth_mon" id="user_birth_day">
+				<option value="01">01</option><option value="02">02</option><option value="03">03</option>
+				<option value="04">04</option><option value="05">05</option><option value="06">06</option>
+				<option value="07">07</option><option value="08">08</option><option value="09">09</option>
+				<option value="10">10</option><option value="11">11</option><option value="12">12</option>
+				</select>월<select name="user_birth_day" id="user_birth_day">
+				<option value="01">01</option><option value="02">02</option><option value="03">03</option>
+				<option value="04">04</option><option value="05">05</option><option value="06">06</option>
+				<option value="07">07</option><option value="08">08</option><option value="09">09</option>
+				<option value="10">10</option><option value="11">11</option><option value="12">12</option>
+				<option value="13">13</option><option value="14">14</option><option value="15">15</option>
+				<option value="16">16</option><option value="17">17</option><option value="18">18</option>
+				<option value="19">19</option><option value="20">20</option><option value="21">21</option>
+				<option value="22">22</option><option value="23">23</option><option value="24">24</option>
+				<option value="25">25</option><option value="26">26</option><option value="27">27</option>
+				<option value="28">28</option><option value="29">29</option><option value="30">30</option>
+				<option value="31">31</option></select>일
+			</tr>
+			<tr>
+				<th>우편번호</th>
+				<td colspan="3"><input type="text" name="user_post" id="user_post" maxlength="10">
+					-<input type="text" name="user_post" id="user_post" maxlength="10">
+					<input type="button" value="우편번호검색"></td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td colspan="3"><input type="text" name="user_address" id="user_address" maxlength="28"></td>
+			</tr>
+			<tr>
+				<th>나머지주소</th>
+				<td colspan="3"><input type="text" name="user_address" id="user_address" maxlength="15"></td>
+			</tr>
+			<tr>
+				<th>E-Mail</th>
+				<td colspan="3"><input type="text" name="user_post" id="user_post" maxlength="10">
+				@<select name="user_email" id="user_email">
+				<option value="gmail">gmail.com</option><option value="naver">naver.com</option>
+				<option value="hanmail">hanmail.com</option><option value="self">직접입력</option>
+				</select>
+			</tr>
+			<tr>
+				<th>직업</th>
+				<td colspan="3"><select name="user_job">
+				<option value="it">컴퓨터/정보통신</option><option value="office">회사원</option>
+				<option value="free">프리랜서</option><option value="else">기타</option></select>
+			</tr>
+			<tr>
+				<td colspan="4"><center><input type="submit" value="등록">
+				<input type="reset" value="취소"></center></td>
+			</tr>
+		</table>
+	</form>			
+	</body>
+</html>
