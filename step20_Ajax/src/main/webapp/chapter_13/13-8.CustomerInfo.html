@@ -1,0 +1,137 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+ .a{border:solid red 5px}
+ span{width:150px; color:red}
+ input{border:solid gray 1px}
+ table{width:100%}
+ th,td{border:1px gray solid; text-align:center;padding:3px}
+ h2{text-align:center}
+ 
+</style>
+
+     <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+
+<script type="text/javascript">
+ $(function(){
+	 //전체검색
+	 $.ajax({
+   			 url: "../selectAllServlet", //접속할 서버의 주소
+   			 type: "post", //요청 방식(method방식=get|post|put|delete)
+   			 //dataType: "text", //서버가 보내온 데이터 타입(text|html|xml|json)
+   			 dataType: "json", //값여러개일땐 json쓰기
+   			 //data:{keyWord:$(this).val()} , //서버에게 보낼 parameter 정보
+   			 success: function(result){//서버의 요청결과가 성공했을때 콜백함수
+   				 //result결과가 개수|단어,단어,단어
+   				 //console.log(result);//여기까지 콘솔 확인용
+   				//alert(result);
+   				let str="";
+  			//반복문으로 직접 뽑아보기
+    			$.each(result, function(index,item){
+    				//alert("index=item\n"+index+"="+item.name); //name, age, addr중 name
+    				str+="<tr>";
+    				str+="<td>"+(index+1)+"</td>";
+    				str+="<td>"+item.id+"</td>";
+    				str+="<td>"+item.name+"</td>";
+    				str+="<td>"+item.age+"</td>";
+    				str+="<td>"+item.tel+"</td>";
+    				str+="<td>"+item.addr+"</td>";
+    				str+="<td><input type='button' value='삭제'></td>";
+    				str+="</tr>";
+    			});
+    			//기존 화면 제거하기 (누적안되게 refresh)
+    			$("#listTable tr:gt(0)").remove();
+    			
+    			//str을 #table의 두번째 행에 넣기
+    			$("#listTable tr:eq(0)").after(str);
+   			 },
+   			 error: function(err){//서버의 요청결과가 실패했을때 콜백함수
+   				alert(err+"->오류발생");
+   			 }
+   			});//ajax끝
+   			
+   			//아이디 중복체크
+   			$("#id").keyup(function(){
+   				if($(this).val()==""){
+   					$("span").html("중복결과여부");
+   					return;
+   				}
+   			$.ajax({
+   			 url: "../idCheckServlet", //접속할 서버의 주소
+   			 type: "post", //요청 방식(method방식=get|post|put|delete)
+   			 //dataType: "text", //서버가 보내온 데이터 타입(text|html|xml|json)
+   			 dataType: "json", //값여러개일땐 json쓰기
+   			 data:{id:$(this).val(), pwd:$(this),  } , //서버에게 보낼 parameter 정보
+   			 success: function(result){//서버의 요청결과가 성공했을때 콜백함수
+   				 //result결과가 개수|단어,단어,단어
+   				 //console.log(result);//여기까지 콘솔 확인용
+   				//alert(result);
+   				$("span").html(`<b>${result}</b>`);
+   			 },
+   			 error: function(err){//서버의 요청결과가 실패했을때 콜백함수
+   				alert(err+"->오류발생");
+   			 }
+   			});//ajax끝
+   			
+   			//insert등록하기
+   			$("#btn").click(function(){
+   				
+   			})
+   			
+   			
+   			
+      		selectAll();
+   			})
+});//jquery끝
+
+</script>
+
+
+</head>
+<body>
+<h2>회원정보 입력 </h2>
+
+<form name="inForm" method="post" id="inForm">
+<table cellspacing="0">
+	<tr bgcolor="pink" >
+	    <th >아이디</th>
+		<th >이름</th>
+		<th  >나이</th>
+		<th  >전화번호</th>	
+		<th  >주소</th>
+	</tr>
+	<tr>
+	    <td style="text-align:left"><input type="text" size="8" name="id" id="id"> <span>중복결과여부</span></td>
+		<td><input type="text" size="8" name="name" id="name"></td>
+		<td><input type="text" size="4" name="age" id="age"></td>
+		<td><input type="text" size="12" name="tel" id="tel"></td>
+		<td><input type="text" size="30" name="addr" id="addr"></td>
+	</tr>
+	<tr>
+		<td colspan="5" align="center"> 
+			<input type="button" value="가입하기"  id="btn">
+		</td>
+	</tr>
+</table>
+</form>
+<br>
+<hr color="red">
+
+<h2> 고객 리스트 !  </h2>
+<table  id="listTable" cellspacing="0">
+	<tr bgcolor="pink">
+	   <th>번호</th>
+	   <th>아이디</th>
+		<th>이름</th>
+		<th>나이</th>
+		<th>전화번호</th>	
+		<th>주소</th>
+		<th>삭제</th>
+	</tr>
+</table>
+
+
+</body>
+</html>

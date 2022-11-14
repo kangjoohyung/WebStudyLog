@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_AoDvMFkLEe2kXLzzdx6Sww" name="step21_ajaxmvc2">
+  <eAnnotations xmi:id="_A80eQFkLEe2kXLzzdx6Sww" source="http://ns.yatta.de/umllab">
+    <contents xmi:type="ecore:EAnnotation" xmi:id="_A80eQVkLEe2kXLzzdx6Sww" source="codegen">
+      <details xmi:id="_A80eQlkLEe2kXLzzdx6Sww" key="codeGenerator" value="com.yattasolutions.ecore.ui.codeGenerator"/>
+    </contents>
+    <contents xmi:type="ecore:EAnnotation" xmi:id="_BDxa0FkLEe2kXLzzdx6Sww" source="genmodel">
+      <details xmi:id="_BDxa0VkLEe2kXLzzdx6Sww" key="href" value="platform:/resource/step21_AjaxMVC/step21_AjaxMVC2.genmodel"/>
+    </contents>
+  </eAnnotations>
+  <profileApplication xmi:id="_A8uXoFkLEe2kXLzzdx6Sww">
+    <eAnnotations xmi:id="_A8xa8FkLEe2kXLzzdx6Sww" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>

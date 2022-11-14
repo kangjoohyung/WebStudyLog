@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	table{width: 600px ; height:auto; border: 5px inset green}
+	th,td{text-align:center; border:1px solid gray}
+</style>
+     <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+
+ <script type="text/javascript">
+  $(function(){
+	  $("#send").click(function(){
+		  //ajax를 한다.
+		  $.ajax({
+			 url: "13-3.serverPage.json", //접속할 서버의 주소
+			 type: "post", //요청 방식(method방식=get|post|put|delete)
+			 dataType: "json", //서버가 보내온 데이터 타입(text|html|xml|json)
+			 //data: , //서버에게 보낼 parameter 정보
+			 success: function(result){//서버의 요청결과가 성공했을때 콜백함수
+				 //alert(result); //object라고 나옴
+			 	//result는 걍 임의 이름, aa등도 가능
+				
+    			//json-뽑아서 반복문 돌려서 테이블 만들기
+    			let str="";
+    			
+    			//반복문으로 직접 뽑아보기
+    			$.each(result, function(index,item){
+    				//alert("index=item\n"+index+"="+item.name); //name, age, addr중 name
+    				str+="<tr>";
+    				str+="<td>"+item.name+"</td>";
+    				str+="<td>"+item.age+"</td>";
+    				str+="<td>"+item.addr+"</td>";
+    				str+="</tr>";
+    			});
+    			//기존 화면 제거하기 (누적안되게 refresh)
+    			$("#table tr:gt(0)").remove();
+    			
+    			//str을 #table의 두번째 행에 넣기
+    			$("#table tr:eq(0)").after(str);
+    			
+			 },
+			 error: function(err){//서버의 요청결과가 실패했을때 콜백함수
+				alert(err+"->오류발생");
+			 }
+		});//ajax
+	  });
+  })
+ </script>
+
+</head>
+<body>
+	<a href="#" id="send">데이터가져오기</a><p/>
+	
+  <table id="table">
+  	  <tr>
+  	  	<th>이름</th>
+		<th>나이</th>
+		<th>주소</th>
+  	  </tr>
+  	  <!-- json의 결과를 추가 -->
+  </table>
+</body>
+</html>
+
+
+

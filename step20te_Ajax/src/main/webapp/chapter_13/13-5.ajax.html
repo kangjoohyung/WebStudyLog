@@ -1,0 +1,66 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+	table{width: 600px ; height:auto; border: 5px inset green}
+	th,td{text-align:center; border:1px solid gray}
+</style>
+ <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+
+ <script type="text/javascript">
+   $(function(){
+	   $("#send").click(function(){
+		  //ajax를한다.
+		  $.ajax({
+			  url:"13-3.serverPage.json"  , //서버의주소
+			  type:"post", //요청방식(method방식= get | post | put | delete)
+			  dataType: "json" ,//서버가 보내온 데이터타입(text | html | xml | json)
+			 // data :, //서버에게 보낼 parameter정보
+			  success:function(result){//서버의요청결과가 성공했을때 콜백함수
+				  //alert(result)
+			  //테이블의 2번째행에 추가
+				  let str="";
+    			  $.each(result , function(index, item){
+    				  //alert(index+" = " + item.name)
+    				  str+="<tr>";
+    				  str+="<td>"+item.name+"</td>";
+    				  str+="<td>"+item.age+"</td>";
+    				  str+="<td>"+item.addr+"</td>";
+    				  str+="</tr>";
+    			  });
+    			  
+    			  //기존 tr을 제거
+    			  $("#table tr:gt(0)").remove();
+    			  
+    			   //str를 table의 두번째 행에 추가 
+    			   $("#table tr:eq(0)").after(str)
+    			
+			  } ,
+			  error:function(err){//서버의 요청결과가 실패했을때 콜백함수
+				  alert(err+"=> 오류발생");
+			  } 
+		  });
+		  
+		  
+	   });
+   })
+ </script>
+</head>
+<body>
+	<a href="#" id="send">데이터가져오기</a><p/>
+	
+  <table id="table">
+  	  <tr>
+  	  	<th>이름</th>
+		<th>나이</th>
+		<th>주소</th>
+  	  </tr>
+  	  <!-- json의 결과 추가 -->
+  </table>
+</body>
+</html>
+
+
+

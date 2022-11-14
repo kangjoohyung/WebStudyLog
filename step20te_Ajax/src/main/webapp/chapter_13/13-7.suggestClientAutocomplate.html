@@ -1,0 +1,57 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+ a{text-decoration: none}
+</style>
+
+ 
+ <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  
+  <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ 
+ 
+ 
+ <script type="text/javascript">
+   $(function(){
+	  $("#keyWord").keyup(function(){
+		  $.ajax({
+			  url:"../suggestLIB"  , //서버의주소
+			  type:"post", //요청방식(method방식= get | post | put | delete)
+			  dataType: "json" ,//서버가 보내온 데이터타입(text | html | xml | json)
+			  data :{keyWord: $(this).val() } , //서버에게 보낼 parameter정보
+			  success:function(result){//result결과가 개수|단어,단어,단어
+				  $("#tag").autocomplete({
+				      source: result
+				    });
+			  } ,
+			  error:function(err){//서버의 요청결과가 실패했을때 콜백함수
+				  alert(err+"=> 오류발생");
+			  } 
+		  });//ajax함수끝
+	  })//keyup끝
+	  
+	  
+   })//ready끝
+ </script>
+
+</head>
+<body>
+<div class="ui-widget">
+  <label for="tags">Tags: </label>
+  <input id="keyWord">
+</div>
+<input id="tag">
+
+
+
+</body>
+</html>
+
+
+
+
+

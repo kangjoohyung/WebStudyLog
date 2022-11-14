@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JSON파일 로드하기</title>
+		<style>
+		div{width:300px;height:200px;
+		    background-color:yellow; 
+			padding:5px;
+		}
+		table{border:inset 3px red}
+		th,td{text-align:center;border:solid 1px gray}
+	</style>
+     <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+    <script>
+    $(function(){
+    	$("#btn").click(function(){
+    		$.getJSON("13-3.serverPage.json",function(result){ //result는 걍 임의 이름, aa등도 가능
+    			//alert("테스트"+result); //객체 5개로 출력됨
+				
+    			//json-뽑아서 반복문 돌려서 테이블 만들기
+    			let str="<table><tr><th>순서</th><th>이름</th><th>나이</th><th>주소</th></tr>";
+    			
+    			//반복문으로 직접 뽑아보기
+    			$.each(result, function(index,item){
+    				//alert("index=item\n"+index+"="+item.name); //name, age, addr중 name
+    				str+="<tr>";
+    				str+="<td>"+(index+1)+"</td>";
+    				str+="<td>"+item.name+"</td>";
+    				str+="<td>"+item.age+"</td>";
+    				str+="<td>"+item.addr+"</td>";
+    				str+="</tr>";
+    			});
+    			str+="</table>";
+    			
+    			//div영역에 변수를 추가한다.
+    			$("#display").html(str);
+    		});
+    	});
+    });
+    </script>
+    
+</head>
+<body>
+    <h3> $.getJSON(url [ ,success]) 함수 </h3>
+    <input type="button" id="btn" value="getJSON요청" />
+    <div id="display">요청결과 출력영역</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
